@@ -1,4 +1,4 @@
-package com.example.jsontry02.Objects;
+package com.example.jsontry02.dto;
 public class Res1{
     public String name;
     public String url;

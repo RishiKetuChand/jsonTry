@@ -9,13 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jsontry02.Objects.Courses;
+import com.example.jsontry02.dto.Course;
+
+
+import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.AdapterViewHolder>{
     Context context;
-    Courses data;
+    List<Course> data;
 
-    public Adapter(Context context, Courses data) {
+    public Adapter(Context context, List<Course> data) {
         this.context = context;
         this.data = data;
     }
@@ -30,14 +33,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
-        Courses courses = null;
-        holder.textView.setText(courses.getC101().name);
+
+        holder.textView.setText(data.get(position).getName());
 
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return data.size();
     }
 
     public class AdapterViewHolder extends RecyclerView.ViewHolder {
@@ -46,6 +49,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterViewHolder>{
             super(itemView);
             textView=(TextView) itemView.findViewById(R.id.text);
         }
+    }
+
+    public void setData(List<Course> data) {
+        this.data = data;
     }
 }
 

@@ -1,4 +1,4 @@
-package com.example.jsontry02.Objects;
+package com.example.jsontry02.dto;
 public class Resources{
     public Res1 res1;
 

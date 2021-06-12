@@ -1,8 +1,8 @@
-package com.example.jsontry02.Objects;
+package com.example.jsontry02.dto;
 public class Sub1{
     public String id;
     public String name;
-    public com.example.jsontry02.Objects.Resources resources;
+    public com.example.jsontry02.dto.Resources resources;
 
     public String getId() {
         return id;
@@ -20,11 +20,11 @@ public class Sub1{
         this.name = name;
     }
 
-    public com.example.jsontry02.Objects.Resources getResources() {
+    public com.example.jsontry02.dto.Resources getResources() {
         return resources;
     }
 
-    public void setResources(com.example.jsontry02.Objects.Resources resources) {
+    public void setResources(com.example.jsontry02.dto.Resources resources) {
         this.resources = resources;
     }
 }

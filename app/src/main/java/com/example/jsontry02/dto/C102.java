@@ -1,9 +1,9 @@
-package com.example.jsontry02.Objects;
+package com.example.jsontry02.dto;
 
-public class C101{
+public class C102{
     public String id;
     public String name;
-    public com.example.jsontry02.Objects.Semesters semesters;
+    public Semesters semesters;
 
     public String getId() {
         return id;
@@ -21,11 +21,11 @@ public class C101{
         this.name = name;
     }
 
-    public com.example.jsontry02.Objects.Semesters getSemesters() {
+    public Semesters getSemesters() {
         return semesters;
     }
 
-    public void setSemesters(com.example.jsontry02.Objects.Semesters semesters) {
+    public void setSemesters(Semesters semesters) {
         this.semesters = semesters;
     }
 }

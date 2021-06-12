@@ -1,4 +1,4 @@
-package com.example.jsontry02.Objects;
+package com.example.jsontry02.dto;
 public class Semesters{
     public Sem1 sem1;
 

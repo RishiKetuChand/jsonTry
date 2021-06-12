@@ -1,8 +1,8 @@
-package com.example.jsontry02.Objects;
+package com.example.jsontry02.dto;
 public class Sem1{
     public String id;
     public String name;
-    public Subjects subjects;
+    public Subject subject;
 
     public String getId() {
         return id;
@@ -20,11 +20,11 @@ public class Sem1{
         this.name = name;
     }
 
-    public Subjects getSubjects() {
-        return subjects;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjects(Subjects subjects) {
-        this.subjects = subjects;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 }
