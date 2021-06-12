@@ -1,15 +1,20 @@
-package com.example.jsontry02;
+package com.example.jsontry02.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jsontry02.R;
+import com.example.jsontry02.activities.SubjectActivity;
 import com.example.jsontry02.dto.Course;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
@@ -35,6 +40,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterViewHolder>{
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
 
         holder.textView.setText(data.get(position).getName());
+        Picasso.get().load(data.get(position).getThumb()).into(holder.imageView);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, SubjectActivity.class);
+                i.putExtra("courseId",data.get(position).getId());
+                context.startActivity(i);
+            }
+        });
+
 
     }
 
@@ -45,9 +60,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterViewHolder>{
 
     public class AdapterViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        ImageView imageView;
+        View view;
         public AdapterViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView=(TextView) itemView.findViewById(R.id.text);
+            textView=(TextView) itemView.findViewById(R.id.item_text);
+            imageView = (ImageView) itemView.findViewById(R.id.item_image);
+            view = itemView;
         }
     }
 
