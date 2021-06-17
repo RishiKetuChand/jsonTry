@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.jsontry02.MainActivity;
 import com.example.jsontry02.R;
 import com.example.jsontry02.dto.Course;
+import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.utilities.ApiHelper;
 import com.example.jsontry02.utilities.ServerCallback;
@@ -30,7 +31,7 @@ public class SplashscreenActivity extends AppCompatActivity implements ServerCal
 	}
 
 	@Override
-	public void onDataRecieved(List<Course> data) {
+	public void onDataReceived(List<Course> data) {
 		//this method is called from apihelper class as callback
 		Intent activitityIntent = new Intent(this, MainActivity.class);
 		Bundle bundle = new Bundle();
@@ -41,7 +42,12 @@ public class SplashscreenActivity extends AppCompatActivity implements ServerCal
 	}
 
 	@Override
-	public void onSubjectDataRecieved(List<Subject> data) {
+	public void onSubjectDataReceived(List<Subject> data) {
+
+	}
+
+	@Override
+	public void onModuleDataReceived(List<Module> data) {
 
 	}
 }

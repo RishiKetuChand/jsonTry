@@ -12,7 +12,7 @@
         android:id="@+id/loading"
         app:lottie_loop="false"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/loaddrop"
+        app:lottie_rawRes="@raw/load_drop"
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:layout_height="match_parent" />

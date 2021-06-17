@@ -1,14 +1,15 @@
 package com.example.jsontry02.utilities;
 
 import android.content.Context;
-import android.os.Handler;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.jsontry02.activities.ModulesActivity;
 import com.example.jsontry02.activities.SplashscreenActivity;
 import com.example.jsontry02.activities.SubjectActivity;
 import com.example.jsontry02.dto.Course;
+import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Subject;
 
 import org.json.JSONException;
@@ -25,6 +26,7 @@ public class ApiHelper {
 	}
 	private static String BASE_URL ="https://college-notes-188a4-default-rtdb.firebaseio.com/main";
 	private static final String SUBJECT_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/main/subjects/";
+	private static final String MODULE_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/main/modules/";
 	private static final String COURSE_ENDPOINT ="/courses.json";
 	public void fetchCources(SplashscreenActivity splashscreenActivity){
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,BASE_URL+COURSE_ENDPOINT,null, new Response.Listener<JSONObject>() {
@@ -59,7 +61,7 @@ public class ApiHelper {
 				}
 			}
 		}
-		splashscreenActivity.onDataRecieved(courses);
+		splashscreenActivity.onDataReceived(courses);
 	}
 
 
@@ -89,8 +91,9 @@ public class ApiHelper {
 						Subject subject = new Subject();
 						subject.setId(temp.getString("id"));
 						subject.setName(temp.getString("name"));
-						subject.setResourceUrl(temp.getString("resourceUrl"));
-						subject.setSemesterName(temp.getString("semesterName"));
+						subject.setSemester(temp.getString("semester"));
+						subject.setCode(temp.getString("code"));
+						subject.setCredits(temp.getString("credits"));
 						subjects.add(subject);
 					}
 				} catch (JSONException e) {
@@ -98,6 +101,43 @@ public class ApiHelper {
 				}
 			}
 		}
-		subjectActivity.onSubjectDataRecieved(subjects);
+		subjectActivity.onSubjectDataReceived(subjects);
 	}
+	public void fetchModules(String subjectId,ModulesActivity modulesActivity){
+		String url = MODULE_BASE+subjectId+".json";
+		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				processModules(response,modulesActivity);
+			}
+		},null);
+		VolleySingleton.getInstance(context).getRequestQueue().add(jsonObjectRequest);
+
+	}
+	private void processModules(JSONObject response, ModulesActivity modulesActivity) {
+		List<Module> modules = new ArrayList<>();
+		if(null != response){
+			Iterator<String> keys = response.keys();
+
+			while(keys.hasNext()) {
+				String key = keys.next();
+				try {
+					if (response.get(key) instanceof JSONObject) {
+						// do something with jsonObject here
+						JSONObject temp = response.getJSONObject(key);
+						Module module= new Module();
+						module.setId(temp.getString("id"));
+						module.setName(temp.getString("name"));
+						module.setResourceUrl(temp.getString("resourceUrl"));
+						module.setSyllabus(temp.getString("syllabus"));
+						modules.add(module);
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		modulesActivity.onModuleDataReceived(modules);
+	}
+
 }

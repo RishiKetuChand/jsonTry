@@ -4,8 +4,9 @@ public class Subject {
 
     private String id;
     private String name;
-    private String resourceUrl;
-    private String semesterName;
+    private String code;
+    private String semester;
+    private String credits;
 
     public String getId() {
         return id;
@@ -23,19 +24,28 @@ public class Subject {
         this.name = name;
     }
 
-    public String getResourceUrl() {
-        return resourceUrl;
+
+    public String getCode() {
+        return code;
     }
 
-    public void setResourceUrl(String resourceUrl) {
-        this.resourceUrl = resourceUrl;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getSemesterName() {
-        return semesterName;
+    public String getSemester() {
+        return semester;
     }
 
-    public void setSemesterName(String semesterName) {
-        this.semesterName = semesterName;
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
+    public String getCredits() {
+        return credits;
+    }
+
+    public void setCredits(String credits) {
+        this.credits = credits;
     }
 }

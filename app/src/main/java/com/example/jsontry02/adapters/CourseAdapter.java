@@ -19,11 +19,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.AdapterViewHolder>{
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.AdapterViewHolder>{
     Context context;
     List<Course> data;
 
-    public Adapter(Context context, List<Course> data) {
+    public CourseAdapter(Context context, List<Course> data) {
         this.context = context;
         this.data = data;
     }

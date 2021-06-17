@@ -13,6 +13,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.jsontry02.R;
 import com.example.jsontry02.adapters.SubjectAdapter;
 import com.example.jsontry02.dto.Course;
+import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.utilities.ApiHelper;
 import com.example.jsontry02.utilities.ServerCallback;
@@ -22,7 +23,6 @@ import java.util.List;
 
 public class SubjectActivity extends AppCompatActivity implements ServerCallback {
 
-	TextView textView;
 	LottieAnimationView animationView;
 	RecyclerView recyclerView;
 	SubjectAdapter adapter;
@@ -51,12 +51,12 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 	}
 
 	@Override
-	public void onDataRecieved(List<Course> data) {
+	public void onDataReceived(List<Course> data) {
 
 	}
 
 	@Override
-	public void onSubjectDataRecieved(List<Subject> data) {
+	public void onSubjectDataReceived(List<Subject> data) {
 		for(Subject sub : data){
 			System.out.println(sub.getName());
 		}
@@ -64,5 +64,10 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		animationView.setVisibility(View.GONE);
 		adapter.setData(data);
 		adapter.notifyDataSetChanged();
+	}
+
+	@Override
+	public void onModuleDataReceived(List<Module> data) {
+
 	}
 }
