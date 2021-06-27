@@ -83,7 +83,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 			protected FilterResults performFiltering(CharSequence charSequence) {
 				List<Subject> filteredList=new ArrayList<>();
 				if(charSequence.toString().isEmpty()){
-
+					filteredList.addAll(dataAll);
 				} else {
 					for (Subject searchedSubject: dataAll){
 						/*First check what toString method is giving you. */
