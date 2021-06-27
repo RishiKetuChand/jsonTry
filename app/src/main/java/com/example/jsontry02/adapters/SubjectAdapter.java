@@ -33,8 +33,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 
 	public SubjectAdapter(Context context, List<Subject> data) {
 		this.context = context;
-		this.data = data;
-		this.dataAll=data;
+		this.data = data; // this points to the original data recieved in the method parameter
+		this.dataAll= new ArrayList<>(); //here we are creating a new array and then add all the data to make a copy of it . We are not assignng the data from method parameter
+		//because if we do so bolth will point to the same data object and any modification we do will reflect in both of them.
+		this.dataAll.addAll(data);
 	}
 
 	public List<Subject> getData() {
@@ -42,7 +44,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 	}
 
 	public void setData(List<Subject> data) {
-		this.data = data;
+		this.data.clear();
+		this.data.addAll(data);
+		this.dataAll.clear();
+		this.dataAll.addAll(data) ;
 	}
 
 	@NonNull
@@ -73,34 +78,37 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 
 	@Override
 	public Filter getFilter() {
-		return filter;
-	}
-	Filter filter= new Filter() {
-		@Override
-		protected FilterResults performFiltering(CharSequence charSequence) {
-			List<Subject> filteredList=new ArrayList<>();
-			if(charSequence.toString().isEmpty()){
-				filteredList=dataAll;
-			} else {
-				for (Subject searchedSubject: dataAll){
-					if(searchedSubject.toString().toLowerCase().contains(charSequence.toString().toLowerCase())){
-						filteredList.addAll(dataAll);
+		return new Filter() {
+			@Override
+			protected FilterResults performFiltering(CharSequence charSequence) {
+				List<Subject> filteredList=new ArrayList<>();
+				if(charSequence.toString().isEmpty()){
+
+				} else {
+					for (Subject searchedSubject: dataAll){
+						/*First check what toString method is giving you. */
+						System.out.println(searchedSubject.toString());
+						// in this case subject is your user defined type ....it has various fields....user is going to enter some character strings
+						// most probably the name of the subjject. So you need to check the users input against the name field of the Subject type
+						if(searchedSubject.getName().toLowerCase().contains(charSequence.toString().toLowerCase())){
+							filteredList.add(searchedSubject);
+						}
 					}
 				}
+				FilterResults filterResults = new FilterResults();
+				filterResults.values=filteredList;
+				return filterResults;
 			}
-			FilterResults filterResults = new FilterResults();
-			filterResults.values=filteredList;
-			return filterResults;
-		}
 
-		@Override
-		protected void publishResults(CharSequence charSequence, FilterResults results) {
-			data.clear();
-			data.addAll((Collection<? extends Subject>) results.values);
-			notifyDataSetChanged();
+			@Override
+			protected void publishResults(CharSequence charSequence, FilterResults results) {
+				data.clear();
+				data.addAll((Collection<? extends Subject>) results.values);
+				notifyDataSetChanged();
 
-		}
-	};
+			}
+		};
+	}
 
 	public class SubjectViewHolder extends RecyclerView.ViewHolder {
 		TextView textView;
