@@ -6,7 +6,10 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,15 +22,19 @@ import com.example.jsontry02.activities.SubjectActivity;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Subject;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder> {
+public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder> implements Filterable {
 	Context context;
 	List<Subject> data;
+	List<Subject> dataAll;
 
 	public SubjectAdapter(Context context, List<Subject> data) {
 		this.context = context;
 		this.data = data;
+		this.dataAll=data;
 	}
 
 	public List<Subject> getData() {
@@ -64,9 +71,39 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 		return data.size();
 	}
 
+	@Override
+	public Filter getFilter() {
+		return filter;
+	}
+	Filter filter= new Filter() {
+		@Override
+		protected FilterResults performFiltering(CharSequence charSequence) {
+			List<Subject> filteredList=new ArrayList<>();
+			if(charSequence.toString().isEmpty()){
+				filteredList=dataAll;
+			} else {
+				for (Subject searchedSubject: dataAll){
+					if(searchedSubject.toString().toLowerCase().contains(charSequence.toString().toLowerCase())){
+						filteredList.addAll(dataAll);
+					}
+				}
+			}
+			FilterResults filterResults = new FilterResults();
+			filterResults.values=filteredList;
+			return filterResults;
+		}
+
+		@Override
+		protected void publishResults(CharSequence charSequence, FilterResults results) {
+			data.clear();
+			data.addAll((Collection<? extends Subject>) results.values);
+			notifyDataSetChanged();
+
+		}
+	};
+
 	public class SubjectViewHolder extends RecyclerView.ViewHolder {
 		TextView textView;
-		ImageView imageView;
 		View view;
 		public SubjectViewHolder(@NonNull View itemView) {
 			super(itemView);

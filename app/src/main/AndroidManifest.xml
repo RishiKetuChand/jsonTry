@@ -10,11 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ModulesActivity"></activity>
+        <activity android:name=".activities.ModulesActivity"/>
         <activity android:name=".activities.FileViewActivity" />
         <activity
             android:name=".activities.SubjectActivity"
-            android:label="@string/subjects" />
+            android:label="@string/subjects"
+            android:parentActivityName=".activities.SplashscreenActivity"/>
         <activity
             android:name=".activities.SplashscreenActivity"
             android:label="@string/title_activity_main"
@@ -26,8 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/courses" />
     </application>
-
 </manifest>

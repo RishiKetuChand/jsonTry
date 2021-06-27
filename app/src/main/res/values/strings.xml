@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">JsonTry02</string>
+    <string name="app_name">Digital Notes</string>
     <string name="courses">Courses</string>
+    <string name="subjects">Subjects</string>
+    <string name="sem3">3rd Sem</string>
+    <string name="sem4">4th Sem</string>
+    <string name="sem5">5th Sem</string>
+    <string name="sem6">6th Sem</string>
+    <string name="sem7">7th Sem</string>
+    <string name="sem8">8th Sem</string>
+    <string name="filter">Filter</string>
+    <string name="search">Search</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -10,5 +19,4 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="subjects">Subjects</string>
 </resources>

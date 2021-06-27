@@ -8,7 +8,6 @@ import android.os.Parcelable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.jsontry02.MainActivity;
 import com.example.jsontry02.R;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
