@@ -5,12 +5,17 @@
         android:icon="@drawable/search"
         android:id="@+id/search"
         app:showAsAction="always|collapseActionView"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
-    <item android:title="@string/filter"
-        android:icon="@drawable/filter"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:contentDescription="@string/search_by_name"/>
+    <item
         android:id="@+id/filter"
+        android:icon="@drawable/filter"
+        android:title="@string/filter"
         app:showAsAction="always">
         <menu>
+            <item
+                android:id="@+id/all"
+                android:title="@string/allSem"/>
             <item
                 android:id="@+id/sem3"
                 android:title="@string/sem3"/>
@@ -22,13 +27,13 @@
                 android:title="@string/sem5"/>
             <item
                 android:id="@+id/sem6"
-                android:title="@string/sem6"/>
+                android:title="@string/sem6" />
             <item
                 android:id="@+id/sem7"
-                android:title="@string/sem7"/>
+                android:title="@string/sem7" />
             <item
                 android:id="@+id/sem8"
-                android:title="@string/sem8"/>
+                android:title="@string/sem8" />
         </menu>
     </item>
 </menu>

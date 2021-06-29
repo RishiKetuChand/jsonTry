@@ -1,8 +1,11 @@
 package com.example.jsontry02.activities;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Parcelable;
 
 
@@ -13,17 +16,22 @@ import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.utilities.ApiHelper;
+import com.example.jsontry02.utilities.ConnectivityCheck;
 import com.example.jsontry02.utilities.ServerCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SplashscreenActivity extends AppCompatActivity implements ServerCallback {
-	Handler handler;
+	BroadcastReceiver broadcastReceiver;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.splashscreen);
+		setContentView(R.layout.activity_splashscreen);
+		broadcastReceiver = new ConnectivityCheck();
+		registerRequest();
+
+
 		//ApiHelper class is created to group all the firebase calls at one place
 		ApiHelper helper = new ApiHelper(this);
 		helper.fetchCources(this);
@@ -31,7 +39,7 @@ public class SplashscreenActivity extends AppCompatActivity implements ServerCal
 
 	@Override
 	public void onDataReceived(List<Course> data) {
-		//this method is called from apihelper class as callback
+		//this method is called from apiHelper class as callback
 		Intent activitityIntent = new Intent(this, MainActivity.class);
 		Bundle bundle = new Bundle();
 		bundle.putParcelableArrayList("courses", (ArrayList<? extends Parcelable>) data);
@@ -48,5 +56,25 @@ public class SplashscreenActivity extends AppCompatActivity implements ServerCal
 	@Override
 	public void onModuleDataReceived(List<Module> data) {
 
+	}
+
+	public void registerRequest(){
+		if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
+			registerReceiver(broadcastReceiver,new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+		}
+	}
+	protected void unregisterRequest(){
+		try {
+			unregisterReceiver(broadcastReceiver);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		unregisterRequest();
 	}
 }

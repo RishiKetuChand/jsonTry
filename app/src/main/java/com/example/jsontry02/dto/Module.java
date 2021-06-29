@@ -5,6 +5,7 @@ public class Module {
     private String name;
     private String syllabus;
     private String resourceUrl;
+    private String moduleNum;
 
     public String getId() {
         return id;
@@ -36,5 +37,13 @@ public class Module {
 
     public void setResourceUrl(String resourceUrl) {
         this.resourceUrl = resourceUrl;
+    }
+
+    public String getModuleNum() {
+        return moduleNum;
+    }
+
+    public void setModuleNum(String moduleNum) {
+        this.moduleNum = moduleNum;
     }
 }

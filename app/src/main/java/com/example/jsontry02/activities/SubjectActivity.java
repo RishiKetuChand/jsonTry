@@ -6,6 +6,8 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,23 +32,25 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 	RecyclerView recyclerView;
 	SubjectAdapter adapter;
 	Toolbar toolbar;
+	String courseId;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_subject);
-		toolbar = findViewById(R.id.subject_toolbar);
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		courseId = getIntent().getStringExtra("courseId");
 		initializeView();
-		fetchSubjects(getIntent().getStringExtra("courseId"));
+		fetchSubjects(courseId);
 	}
 	public void initializeView(){
+		toolbar = findViewById(R.id.subject_toolbar);
+		toolbar.setTitle(courseId);
+		setSupportActionBar(toolbar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		recyclerView = findViewById(R.id.subjectRecyclerview);
 		RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
 		recyclerView.setLayoutManager(lm);
 		adapter = new SubjectAdapter(this, new ArrayList<>());
 		recyclerView.setAdapter(adapter);
-
 	}
 
 	private void fetchSubjects(String courseId) {
@@ -80,6 +84,7 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		return true;
 	}
 
+	@SuppressLint("NonConstantResourceId")
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 		switch (item.getItemId()){
@@ -98,31 +103,28 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 					}
 				});
 				return true;
+			case R.id.all:
+				adapter.getFilter().filter("");
+				return true;
 			case R.id.sem3:
-				//code
+				adapter.getFilter().filter("03");
 				return true;
 			case R.id.sem4:
-				//code
+				adapter.getFilter().filter("04");
 				return true;
 			case R.id.sem5:
-				//code
+				adapter.getFilter().filter("05");
 				return true;
 			case R.id.sem6:
-				//code
+				adapter.getFilter().filter("06");
 				return true;
 			case R.id.sem7:
-				//code
+				adapter.getFilter().filter("07");
 				return true;
 			case R.id.sem8:
-				//code
+				adapter.getFilter().filter("08");
 				return true;
 			default:return super.onOptionsItemSelected(item);
 		}
-
 	}
-
-	private void searchingTheSubject(@NonNull MenuItem item) {
-
-	}
-
 }

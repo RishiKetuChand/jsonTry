@@ -3,6 +3,7 @@
     package="com.example.jsontry02">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,12 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ModulesActivity"/>
+        <activity android:name=".activities.HomeActivity"></activity>
+
+        <receiver android:name=".utilities.ConnectivityCheck">
+            <intent-filter>
+                <action android:name="android.intent.action.CONFIGURATION_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".activities.ModulesActivity"
+            android:label="Module"
+            android:parentActivityName=".activities.SubjectActivity" />
         <activity android:name=".activities.FileViewActivity" />
         <activity
             android:name=".activities.SubjectActivity"
             android:label="@string/subjects"
-            android:parentActivityName=".activities.SplashscreenActivity"/>
+            android:parentActivityName=".activities.SplashscreenActivity" />
         <activity
             android:name=".activities.SplashscreenActivity"
             android:label="@string/title_activity_main"
@@ -30,4 +42,5 @@
             android:name=".activities.MainActivity"
             android:label="@string/courses" />
     </application>
+
 </manifest>

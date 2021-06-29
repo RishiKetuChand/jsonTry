@@ -35,7 +35,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 		this.context = context;
 		this.data = data; // this points to the original data recieved in the method parameter
 		this.dataAll= new ArrayList<>(); //here we are creating a new array and then add all the data to make a copy of it . We are not assignng the data from method parameter
-		//because if we do so bolth will point to the same data object and any modification we do will reflect in both of them.
+		//because if we do so both will point to the same data object and any modification we do will reflect in both of them.
 		this.dataAll.addAll(data);
 	}
 
@@ -60,7 +60,9 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 
 	@Override
 	public void onBindViewHolder(@NonNull SubjectAdapter.SubjectViewHolder holder, int position) {
-			holder.textView.setText(data.get(position).getName());
+			holder.subject_name.setText(data.get(position).getName());
+			holder.subject_code.setText(data.get(position).getCode());
+			holder.subject_credits.setText(data.get(position).getCredits());
 			holder.view.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
@@ -89,8 +91,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 						/*First check what toString method is giving you. */
 						System.out.println(searchedSubject.toString());
 						// in this case subject is your user defined type ....it has various fields....user is going to enter some character strings
-						// most probably the name of the subjject. So you need to check the users input against the name field of the Subject type
+						// most probably the name of the subject. So you need to check the users input against the name field of the Subject type
 						if(searchedSubject.getName().toLowerCase().contains(charSequence.toString().toLowerCase())){
+							filteredList.add(searchedSubject);
+						} else if (searchedSubject.getSemester().toLowerCase().contains(charSequence.toString().toLowerCase())){
 							filteredList.add(searchedSubject);
 						}
 					}
@@ -111,11 +115,13 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 	}
 
 	public class SubjectViewHolder extends RecyclerView.ViewHolder {
-		TextView textView;
+		TextView subject_name, subject_code,subject_credits;
 		View view;
 		public SubjectViewHolder(@NonNull View itemView) {
 			super(itemView);
-			textView=(TextView) itemView.findViewById(R.id.subject_name);
+			subject_name=(TextView) itemView.findViewById(R.id.subject_name);
+			subject_code=(TextView) itemView.findViewById(R.id.subject_code_num);
+			subject_credits=(TextView) itemView.findViewById(R.id.subject_credits_num);
 			view = itemView;
 		}
 	}

@@ -10,4 +10,5 @@
     <color name="colorPrimary">#06010C</color>
     <color name="colorPrimaryDark">#010002</color>
     <color name="colorAccent">#A80404</color>
+    <color name="bg_color_for_item">#C4DA1313</color>
 </resources>

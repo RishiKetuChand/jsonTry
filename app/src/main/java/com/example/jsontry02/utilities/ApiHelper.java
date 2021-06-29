@@ -130,6 +130,7 @@ public class ApiHelper {
 						module.setName(temp.getString("name"));
 						module.setResourceUrl(temp.getString("resourceUrl"));
 						module.setSyllabus(temp.getString("syllabus"));
+						module.setModuleNum(temp.getString("moduleNum"));
 						modules.add(module);
 					}
 				} catch (JSONException e) {
