@@ -3,6 +3,7 @@ package com.example.jsontry02.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.jsontry02.R;
@@ -22,17 +28,18 @@ import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.utilities.ApiHelper;
 import com.example.jsontry02.utilities.ServerCallback;
+import com.skydoves.powerspinner.PowerSpinnerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectActivity extends AppCompatActivity implements ServerCallback {
+public class SubjectActivity extends AppCompatActivity implements ServerCallback{
 
 	LottieAnimationView animationView;
 	RecyclerView recyclerView;
 	SubjectAdapter adapter;
 	Toolbar toolbar;
-	String courseId;
+	String courseId,spinnerItem ="";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,7 +88,46 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.subject_menu,menu);
+
+		MenuItem item = menu.findItem(R.id.filter);
+		Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
+
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+				R.array.semFilter, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		spinner.setAdapter(adapter);
+		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				spinnerItem=parent.getItemAtPosition(position).toString();
+				StartFiltering();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
 		return true;
+	}
+
+	private void StartFiltering() {
+		if(spinnerItem.equals("All Sem")){
+			adapter.getFilter().filter("");
+		} else if (spinnerItem.equals("3rd Sem")){
+			adapter.getFilter().filter("03");
+		} else if (spinnerItem.equals("4th Sem")){
+			adapter.getFilter().filter("04");
+		} else if (spinnerItem.equals("5th Sem")){
+			adapter.getFilter().filter("05");
+		} else if (spinnerItem.equals("6th Sem")){
+			adapter.getFilter().filter("06");
+		} else if (spinnerItem.equals("7th Sem")){
+			adapter.getFilter().filter("07");
+		} else{
+			adapter.getFilter().filter("08");
+		}
 	}
 
 	@SuppressLint("NonConstantResourceId")
@@ -103,28 +149,11 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 					}
 				});
 				return true;
-			case R.id.all:
-				adapter.getFilter().filter("");
-				return true;
-			case R.id.sem3:
-				adapter.getFilter().filter("03");
-				return true;
-			case R.id.sem4:
-				adapter.getFilter().filter("04");
-				return true;
-			case R.id.sem5:
-				adapter.getFilter().filter("05");
-				return true;
-			case R.id.sem6:
-				adapter.getFilter().filter("06");
-				return true;
-			case R.id.sem7:
-				adapter.getFilter().filter("07");
-				return true;
-			case R.id.sem8:
-				adapter.getFilter().filter("08");
+			case R.id.filter:
+
 				return true;
 			default:return super.onOptionsItemSelected(item);
 		}
 	}
 }
+//adapter.getFilter().filter("08");

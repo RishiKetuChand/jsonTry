@@ -23,7 +23,6 @@
             android:name=".activities.ModulesActivity"
             android:label="Module"
             android:parentActivityName=".activities.SubjectActivity" />
-        <activity android:name=".activities.FileViewActivity" />
         <activity
             android:name=".activities.SubjectActivity"
             android:label="@string/subjects"

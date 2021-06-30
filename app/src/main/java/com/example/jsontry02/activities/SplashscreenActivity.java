@@ -40,7 +40,7 @@ public class SplashscreenActivity extends AppCompatActivity implements ServerCal
 	@Override
 	public void onDataReceived(List<Course> data) {
 		//this method is called from apiHelper class as callback
-		Intent activitityIntent = new Intent(this, MainActivity.class);
+		Intent activitityIntent = new Intent(this, HomeActivity.class);
 		Bundle bundle = new Bundle();
 		bundle.putParcelableArrayList("courses", (ArrayList<? extends Parcelable>) data);
 		activitityIntent.putExtras(bundle);

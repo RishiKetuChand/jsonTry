@@ -8,16 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jsontry02.R;
-import com.example.jsontry02.activities.FileViewActivity;
 import com.example.jsontry02.dto.Module;
-import com.example.jsontry02.dto.Subject;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -61,13 +58,13 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleView
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-					Intent i = new Intent(context, FileViewActivity.class);
-					i.putExtra("pdfUrl",data.get(position).getResourceUrl());
-					context.startActivity(i);
+					//Intent i = new Intent(context, FileViewActivity.class);
+					//i.putExtra("pdfUrl",data.get(position).getResourceUrl());
+					//context.startActivity(i);
 
-                //Uri webpage = Uri.parse(data.get(position).getResourceUrl());
-               // Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                //context.startActivity(webIntent);
+                Uri webpage = Uri.parse(data.get(position).getResourceUrl());
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                context.startActivity(webIntent);
             }
         });
 

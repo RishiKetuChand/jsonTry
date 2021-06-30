@@ -1,8 +1,6 @@
 package com.example.jsontry02.activities;
 
 import android.os.Bundle;
-import android.view.Window;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,12 +22,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView=findViewById(R.id.recyclerView);
-        List<Course> courseData = getIntent().getExtras().getParcelableArrayList("courses");
+        List<Course> courseData = getIntent().getExtras().getParcelableArrayList("coursesList");
         adapter = new CourseAdapter(this,courseData);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);
     }
+
 }
 
 

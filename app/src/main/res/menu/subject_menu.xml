@@ -11,29 +11,6 @@
         android:id="@+id/filter"
         android:icon="@drawable/filter"
         android:title="@string/filter"
-        app:showAsAction="always">
-        <menu>
-            <item
-                android:id="@+id/all"
-                android:title="@string/allSem"/>
-            <item
-                android:id="@+id/sem3"
-                android:title="@string/sem3"/>
-            <item
-                android:id="@+id/sem4"
-                android:title="@string/sem4"/>
-            <item
-                android:id="@+id/sem5"
-                android:title="@string/sem5"/>
-            <item
-                android:id="@+id/sem6"
-                android:title="@string/sem6" />
-            <item
-                android:id="@+id/sem7"
-                android:title="@string/sem7" />
-            <item
-                android:id="@+id/sem8"
-                android:title="@string/sem8" />
-        </menu>
-    </item>
+        app:showAsAction="always"
+        app:actionViewClass="android.widget.Spinner"/>
 </menu>
