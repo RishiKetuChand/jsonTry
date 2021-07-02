@@ -1,20 +1,27 @@
 package com.example.jsontry02.adapters;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jsontry02.R;
+import com.example.jsontry02.activities.ModulesActivity;
 import com.example.jsontry02.dto.Module;
+import com.google.gson.internal.$Gson$Preconditions;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -62,9 +69,21 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleView
 					//i.putExtra("pdfUrl",data.get(position).getResourceUrl());
 					//context.startActivity(i);
 
-                Uri webpage = Uri.parse(data.get(position).getResourceUrl());
-                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                context.startActivity(webIntent);
+               Uri webpage = Uri.parse(data.get(position).getResourceUrl());
+               // Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                //context.startActivity(webIntent);
+
+                DownloadManager.Request request = new DownloadManager.Request( Uri.parse(data.get(position).getResourceUrl()));
+                request.setTitle("Trail 01");
+                request.setDescription("Trail Description");
+                request.setAllowedOverRoaming(true);
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                request.allowScanningByMediaScanner();
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,"Trail File");
+                request.setMimeType(getMimeType(data.get(position).getResourceUrl()));
+
+                DownloadManager manager = (DownloadManager) view.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
+                manager.enqueue(request);
             }
         });
 
@@ -116,5 +135,14 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleView
                 module_syllabus=(TextView) itemView.findViewById(R.id.module_syllabus_full);
                 view = itemView;
         }
+    }
+
+    public static String getMimeType(String url) {
+        String type = null;
+        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+        if (extension != null) {
+            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
+        }
+        return type;
     }
 }
