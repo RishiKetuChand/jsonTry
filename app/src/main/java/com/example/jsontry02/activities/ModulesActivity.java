@@ -1,5 +1,6 @@
 package com.example.jsontry02.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -108,5 +109,13 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
             default:return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = getIntent();
+        intent.putExtra("courseId","ECE");
+        setResult(RESULT_OK,intent);
     }
 }

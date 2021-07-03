@@ -79,7 +79,8 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleView
                 request.setAllowedOverRoaming(true);
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
                 request.allowScanningByMediaScanner();
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,"Trail File");
+                //in the firebase database use the complete file name in module's name field
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,data.get(position).getName());
                 request.setMimeType(getMimeType(data.get(position).getResourceUrl()));
 
                 DownloadManager manager = (DownloadManager) view.getContext().getSystemService(Context.DOWNLOAD_SERVICE);

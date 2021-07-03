@@ -1,6 +1,7 @@
 package com.example.jsontry02.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,6 +32,8 @@ import com.example.jsontry02.utilities.ApiHelper;
 import com.example.jsontry02.utilities.ServerCallback;
 import com.skydoves.powerspinner.PowerSpinnerView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,11 +47,36 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//onRestoreInstanceState(savedInstanceState);
 		setContentView(R.layout.activity_subject);
 		courseId = getIntent().getStringExtra("courseId");
+
 		initializeView();
 		fetchSubjects(courseId);
 	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+
+	}
+
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
 	public void initializeView(){
 		toolbar = findViewById(R.id.subject_toolbar);
 		toolbar.setTitle(courseId);
@@ -58,6 +87,19 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		recyclerView.setLayoutManager(lm);
 		adapter = new SubjectAdapter(this, new ArrayList<>());
 		recyclerView.setAdapter(adapter);
+	}
+
+
+//	@Override
+//	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//		super.onRestoreInstanceState(savedInstanceState);
+//		courseId = savedInstanceState.getString("courseId");
+//	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle savedInstanceState) {
+		super.onSaveInstanceState(savedInstanceState);
+		savedInstanceState.putString("courseId",courseId);
 	}
 
 	private void fetchSubjects(String courseId) {
