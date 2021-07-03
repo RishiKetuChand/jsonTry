@@ -29,6 +29,7 @@ import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.utilities.ApiHelper;
+import com.example.jsontry02.utilities.PreferenceManager;
 import com.example.jsontry02.utilities.ServerCallback;
 import com.skydoves.powerspinner.PowerSpinnerView;
 
@@ -47,12 +48,27 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//onRestoreInstanceState(savedInstanceState);
 		setContentView(R.layout.activity_subject);
 		courseId = getIntent().getStringExtra("courseId");
-
+		if(null == courseId){
+			courseId = fetchValueFromPreference();
+		}
+		else{
+			saveCourseIdToPreference(courseId);
+		}
+		String temp  =  fetchValueFromPreference();
 		initializeView();
 		fetchSubjects(courseId);
+	}
+
+	private String fetchValueFromPreference() {
+		PreferenceManager pm = new PreferenceManager(getApplicationContext());
+		return pm.getCourseId();
+
+	}
+	private void saveCourseIdToPreference(String courseId){
+		PreferenceManager pm = new PreferenceManager(getApplicationContext());
+		pm.saveCourseId(courseId);
 	}
 
 	@Override
