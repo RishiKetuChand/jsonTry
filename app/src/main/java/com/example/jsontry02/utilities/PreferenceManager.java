@@ -9,6 +9,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class PreferenceManager {
 	private static final String COURSE_ID = "courseId";
+	private static final String SUBJECT_ID = "subjectId";
 
 	Context context;
 	public PreferenceManager(Context context){
@@ -22,7 +23,7 @@ public class PreferenceManager {
 		// Creating an Editor object to edit(write to the file)
 		SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
-		// Storing the key and its value as the data fetched from edittext
+		// Storing the key and its value as the data fetched from editText
 		myEdit.putString(key, value);
 
 	// Once the changes have been made,
@@ -38,5 +39,14 @@ public class PreferenceManager {
 	public String getCourseId(){
 		SharedPreferences sharedPreferences =context.getSharedPreferences("MySharedPref",MODE_PRIVATE);
 		return sharedPreferences.getString(COURSE_ID,"");
+	}
+
+	public void saveSubjectId(String subjectId){
+		saveString(SUBJECT_ID,subjectId);
+	}
+
+	public String getSubjectId(){
+		SharedPreferences sharedPreferences =context.getSharedPreferences("MySharedPref",MODE_PRIVATE);
+		return sharedPreferences.getString(SUBJECT_ID,"");
 	}
 }

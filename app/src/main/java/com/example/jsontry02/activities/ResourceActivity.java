@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.jsontry02.R;
@@ -49,6 +50,7 @@ public class ResourceActivity extends AppCompatActivity implements ServerCallbac
     }
 
     public void initializeView(){
+        animationView = findViewById(R.id.loading);
         toolbar = findViewById(R.id.resource_toolbar);
         toolbar.setTitle(resourceID);
         setSupportActionBar(toolbar);
@@ -77,6 +79,7 @@ public class ResourceActivity extends AppCompatActivity implements ServerCallbac
 
     @Override
     public void onResourceDataReceived(List<Resource> data) {
+        animationView.setVisibility(View.GONE);
         adapter.setData(data);
         adapter.notifyDataSetChanged();
 

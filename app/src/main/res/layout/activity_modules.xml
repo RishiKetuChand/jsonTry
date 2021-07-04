@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ModulesActivity">
+    tools:context=".activities.ModulesActivity"
+    android:background="@drawable/course_bg">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading"
@@ -17,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_loop="false"
+        app:lottie_loop="true"
         app:lottie_rawRes="@raw/hosting_loading" />
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/module_toolbar"

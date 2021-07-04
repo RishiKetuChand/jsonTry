@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ResourceActivity"></activity>
+        <activity android:name=".activities.ResourceActivity"
+            android:label="@string/resources"
+            android:parentActivityName=".activities.ModulesActivity"/>
         <activity android:name=".activities.HomeActivity" />
 
         <receiver android:name=".utilities.ConnectivityCheck">
@@ -24,7 +26,7 @@
 
         <activity
             android:name=".activities.ModulesActivity"
-            android:label="Module"
+            android:label="@string/module"
             android:parentActivityName=".activities.SubjectActivity" />
         <activity
             android:name=".activities.SubjectActivity"
@@ -42,7 +44,8 @@
         </activity>
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/courses" />
+            android:label="@string/courses"
+            android:parentActivityName=".activities.SplashscreenActivity"/>
     </application>
 
 </manifest>

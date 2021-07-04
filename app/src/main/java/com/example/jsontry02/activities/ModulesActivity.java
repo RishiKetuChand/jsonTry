@@ -22,6 +22,7 @@ import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.utilities.ApiHelper;
+import com.example.jsontry02.utilities.PreferenceManager;
 import com.example.jsontry02.utilities.ServerCallback;
 
 import java.util.ArrayList;
@@ -39,15 +40,21 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modules);
         subjectId = getIntent().getStringExtra("subjectId");
-        toolbar = findViewById(R.id.module_toolbar);
-        toolbar.setTitle(subjectId);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(null == subjectId){
+            subjectId = fetchValueFromPreference();
+        }
+        else{
+            saveSubjectIdToPreference(subjectId);
+        }
         initializeView();
         fetchModules(subjectId);
     }
     public void initializeView() {
         animationView = findViewById(R.id.loading);
+        toolbar = findViewById(R.id.module_toolbar);
+        toolbar.setTitle(subjectId);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.moduleRecyclerView);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(lm);
@@ -58,6 +65,42 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
     private void fetchModules(String subjectId) {
         ApiHelper helper = new ApiHelper(this);
         helper.fetchModules(subjectId,this);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private String fetchValueFromPreference() {
+        PreferenceManager pm = new PreferenceManager(getApplicationContext());
+        return pm.getSubjectId();
+
+    }
+    private void saveSubjectIdToPreference(String subjectId){
+        PreferenceManager pm = new PreferenceManager(getApplicationContext());
+        pm.saveSubjectId(subjectId);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("subjectId",subjectId);
     }
 
     @Override

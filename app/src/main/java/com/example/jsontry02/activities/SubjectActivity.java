@@ -88,13 +88,13 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 
 	}
 
-
 	@Override
 	protected void onResume() {
 		super.onResume();
 	}
 
 	public void initializeView(){
+		animationView = findViewById(R.id.loading);
 		toolbar = findViewById(R.id.subject_toolbar);
 		toolbar.setTitle(courseId);
 		setSupportActionBar(toolbar);
@@ -105,13 +105,6 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		adapter = new SubjectAdapter(this, new ArrayList<>());
 		recyclerView.setAdapter(adapter);
 	}
-
-
-//	@Override
-//	protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//		super.onRestoreInstanceState(savedInstanceState);
-//		courseId = savedInstanceState.getString("courseId");
-//	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
@@ -134,6 +127,7 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		for(Subject sub : data){
 			System.out.println(sub.getName());
 		}
+		animationView.setVisibility(View.GONE);
 		adapter.setData(data);
 		adapter.notifyDataSetChanged();
 	}
@@ -220,3 +214,10 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		}
 	}
 }
+
+
+//	@Override
+//	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//		super.onRestoreInstanceState(savedInstanceState);
+//		courseId = savedInstanceState.getString("courseId");
+//	}

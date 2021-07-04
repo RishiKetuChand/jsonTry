@@ -39,7 +39,6 @@ public class HomeActivity extends AppCompatActivity {
                 bundle.putParcelableArrayList("coursesList", (ArrayList<? extends Parcelable>) courseData);
                 activityIntent.putExtras(bundle);
                 startActivity(activityIntent);
-                finish();
             }
         });
     }
