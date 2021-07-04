@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +12,14 @@ import android.webkit.MimeTypeMap;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jsontry02.R;
 import com.example.jsontry02.activities.ModulesActivity;
+import com.example.jsontry02.activities.ResourceActivity;
 import com.example.jsontry02.dto.Module;
-import com.google.gson.internal.$Gson$Preconditions;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -65,15 +63,20 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleView
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-					//Intent i = new Intent(context, FileViewActivity.class);
-					//i.putExtra("pdfUrl",data.get(position).getResourceUrl());
-					//context.startActivity(i);
+
+
+                Intent i = new Intent(context, ResourceActivity.class);
+                i.putExtra("resourceId",data.get(position).getResourceID());
+                context.startActivity(i);
+                /*Intent i = new Intent(context, FileViewActivity.class);
+                i.putExtra("pdfUrl",data.get(position).getResourceUrl());
+                context.startActivity(i);
 
                Uri webpage = Uri.parse(data.get(position).getResourceUrl());
-               // Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                //context.startActivity(webIntent);
+               Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                context.startActivity(webIntent);
 
-                DownloadManager.Request request = new DownloadManager.Request( Uri.parse(data.get(position).getResourceUrl()));
+                DownloadManager.Request request = new DownloadManager.Request( Uri.parse(data.get(position).getResourceID()));
                 request.setTitle("Trail 01");
                 request.setDescription("Trail Description");
                 request.setAllowedOverRoaming(true);
@@ -81,10 +84,10 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleView
                 request.allowScanningByMediaScanner();
                 //in the firebase database use the complete file name in module's name field
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,data.get(position).getName());
-                request.setMimeType(getMimeType(data.get(position).getResourceUrl()));
+                request.setMimeType(getMimeType(data.get(position).getResourceID()));
 
                 DownloadManager manager = (DownloadManager) view.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-                manager.enqueue(request);
+                manager.enqueue(request);*/
             }
         });
 

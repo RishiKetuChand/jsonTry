@@ -3,6 +3,8 @@
 
     <string name="courses">Courses</string>
     <string name="subjects">Subjects</string>
+    <string name="modules">Modules</string>
+    <string name="resources">Resources</string>
 
     <string name="sem3">3rd Sem</string>
     <string name="sem4">4th Sem</string>
@@ -21,6 +23,8 @@
     <string name="module">Module:</string>
     <string name="tryAgain">TryAgain</string>
     <string name="syllabus">Syllabus:</string>
+    <string name="title">Title:</string>
+    <string name="type">Type:</string>
 
 
     <string name="notes">Notes</string>
@@ -31,7 +35,8 @@
     <string name="books">Books</string>
     <string name="videos">Videos</string>
     <string name="complaints">Review</string>
-
+    <string name="view">View</string>
+    <string name="download">Download</string>
 
 
     <string name="title_activity_main">MainActivity</string>
@@ -43,7 +48,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
 
 
     <string-array name="semFilter">

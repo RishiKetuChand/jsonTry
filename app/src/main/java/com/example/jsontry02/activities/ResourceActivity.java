@@ -1,22 +1,22 @@
 package com.example.jsontry02.activities;
 
-import android.content.Intent;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.jsontry02.R;
 import com.example.jsontry02.adapters.ModuleAdapter;
+import com.example.jsontry02.adapters.ResourceAdapter;
+import com.example.jsontry02.adapters.SubjectAdapter;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
@@ -27,37 +27,37 @@ import com.example.jsontry02.utilities.ServerCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModulesActivity extends AppCompatActivity implements ServerCallback {
+public class ResourceActivity extends AppCompatActivity implements ServerCallback {
     LottieAnimationView animationView;
     RecyclerView recyclerView;
-    ModuleAdapter adapter;
+    ResourceAdapter adapter;
     Toolbar toolbar;
-    String subjectId;
+    String resourceID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modules);
-        subjectId = getIntent().getStringExtra("subjectId");
-        toolbar = findViewById(R.id.module_toolbar);
-        toolbar.setTitle(subjectId);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_resource);
+        resourceID = getIntent().getStringExtra("resourceId");
         initializeView();
-        fetchModules(subjectId);
-    }
-    public void initializeView() {
-        animationView = findViewById(R.id.loading);
-        recyclerView = findViewById(R.id.moduleRecyclerView);
-        RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(lm);
-        adapter = new ModuleAdapter(this, new ArrayList<>());
-        recyclerView.setAdapter(adapter);
+        fetchResources(resourceID);
     }
 
-    private void fetchModules(String subjectId) {
+    private void fetchResources(String resourceID) {
         ApiHelper helper = new ApiHelper(this);
-        helper.fetchModules(subjectId,this);
+        helper.fetchResource(resourceID,this);
+    }
+
+    public void initializeView(){
+        toolbar = findViewById(R.id.resource_toolbar);
+        toolbar.setTitle(resourceID);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        recyclerView = findViewById(R.id.resourceRecyclerview);
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(lm);
+        adapter = new ResourceAdapter(this, new ArrayList<>());
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -72,21 +72,15 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
 
     @Override
     public void onModuleDataReceived(List<Module> data) {
-        for(Module mod : data){
-            System.out.println(mod.getName());
-        }
-
-        animationView.setVisibility(View.GONE);
-        adapter.setData(data);
-        adapter.notifyDataSetChanged();
 
     }
 
     @Override
     public void onResourceDataReceived(List<Resource> data) {
+        adapter.setData(data);
+        adapter.notifyDataSetChanged();
 
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -115,13 +109,5 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
             default:return super.onOptionsItemSelected(item);
         }
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = getIntent();
-        intent.putExtra("courseId","ECE");
-        setResult(RESULT_OK,intent);
     }
 }

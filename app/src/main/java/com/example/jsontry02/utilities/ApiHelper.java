@@ -6,10 +6,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.jsontry02.activities.ModulesActivity;
+import com.example.jsontry02.activities.ResourceActivity;
 import com.example.jsontry02.activities.SplashscreenActivity;
 import com.example.jsontry02.activities.SubjectActivity;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
+import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Subject;
 
 import org.json.JSONException;
@@ -27,6 +29,7 @@ public class ApiHelper {
 	private static String BASE_URL ="https://college-notes-188a4-default-rtdb.firebaseio.com/main";
 	private static final String SUBJECT_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/main/subjects/";
 	private static final String MODULE_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/main/modules/";
+	private static final String RESOURCE_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/main/resources%20/";
 	private static final String COURSE_ENDPOINT ="/courses.json";
 	public void fetchCources(SplashscreenActivity splashscreenActivity){
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,BASE_URL+COURSE_ENDPOINT,null, new Response.Listener<JSONObject>() {
@@ -128,7 +131,7 @@ public class ApiHelper {
 						Module module= new Module();
 						module.setId(temp.getString("id"));
 						module.setName(temp.getString("name"));
-						module.setResourceUrl(temp.getString("resourceUrl"));
+						module.setResourceID(temp.getString("resourceID"));
 						module.setSyllabus(temp.getString("syllabus"));
 						module.setModuleNum(temp.getString("moduleNum"));
 						modules.add(module);
@@ -139,6 +142,43 @@ public class ApiHelper {
 			}
 		}
 		modulesActivity.onModuleDataReceived(modules);
+	}
+
+	public void fetchResource(String resourceID, ResourceActivity resourceActivity){
+		String url = RESOURCE_BASE+resourceID+".json";
+		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				processResource(response,resourceActivity);
+			}
+		},null);
+		VolleySingleton.getInstance(context).getRequestQueue().add(jsonObjectRequest);
+
+	}
+	private void processResource(JSONObject response, ResourceActivity resourceActivity) {
+		List<Resource> resources = new ArrayList<>();
+		if(null != response){
+			Iterator<String> keys = response.keys();
+
+			while(keys.hasNext()) {
+				String key = keys.next();
+				try {
+					if (response.get(key) instanceof JSONObject) {
+						// do something with jsonObject here
+						JSONObject temp = response.getJSONObject(key);
+						Resource resource= new Resource();
+						resource.setFile(temp.getString("file"));
+						resource.setFileName(temp.getString("fileName"));
+						resource.setFileModuleTitle(temp.getString("fileModuleTitle"));
+						resource.setFileType(temp.getString("fileType"));
+						resources.add(resource);
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		resourceActivity.onResourceDataReceived(resources);
 	}
 
 }

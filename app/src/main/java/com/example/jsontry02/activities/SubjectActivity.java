@@ -27,6 +27,7 @@ import com.example.jsontry02.R;
 import com.example.jsontry02.adapters.SubjectAdapter;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
+import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.utilities.ApiHelper;
 import com.example.jsontry02.utilities.PreferenceManager;
@@ -143,6 +144,11 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 	}
 
 	@Override
+	public void onResourceDataReceived(List<Resource> data) {
+
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.subject_menu,menu);
@@ -214,4 +220,3 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		}
 	}
 }
-//adapter.getFilter().filter("08");
