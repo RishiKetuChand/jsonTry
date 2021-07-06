@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.jsontry02.R;
 import com.example.jsontry02.dto.Resource;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -69,14 +70,19 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.Resour
         holder.fileDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                File myApp = new File(Environment.getExternalStorageDirectory(),"myAppTrail");
+                if (!myApp.exists()){
+                    myApp.mkdir();
+                }
                 DownloadManager.Request request = new DownloadManager.Request( Uri.parse(data.get(position).getFile()));
                 request.setTitle(data.get(position).getFileName());
                 request.setDescription("File Downloading.....");
                 request.setAllowedOverRoaming(true);
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                //request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 request.allowScanningByMediaScanner();
                 //in the firebase database use the complete file name in module's name field
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,data.get(position).getFileName()+"."+data.get(position).getFileType().toLowerCase());
+                request.setDestinationInExternalPublicDir(myApp.getAbsolutePath(),data.get(position).getFileName()+"."+data.get(position).getFileType().toLowerCase());
                 request.setMimeType(getMimeType(data.get(position).getFile()));
 
                 DownloadManager manager = (DownloadManager) v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
