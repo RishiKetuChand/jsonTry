@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jsontry02.R;
+import com.example.jsontry02.constants.AppConstants;
 import com.example.jsontry02.dto.Resource;
 
 import java.io.File;
@@ -70,9 +71,9 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.Resour
         holder.fileDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File myApp = new File(Environment.getExternalStorageDirectory(),"myAppTrail");
-                if (!myApp.exists()){
-                    myApp.mkdir();
+                File resourceLocation = new File(context.getExternalFilesDir(AppConstants.APP_ROOT_FOLDER),AppConstants.DOC_FOLDER_NAME);
+                if (!resourceLocation.exists()){
+                    resourceLocation.mkdir();
                 }
                 DownloadManager.Request request = new DownloadManager.Request( Uri.parse(data.get(position).getFile()));
                 request.setTitle(data.get(position).getFileName());
@@ -81,8 +82,12 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceAdapter.Resour
                 //request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 request.allowScanningByMediaScanner();
+                File resource = new File(resourceLocation,data.get(position).getFileName()+"."+data.get(position).getFileType().toLowerCase());
+                Uri destination = Uri.fromFile(resource);
+                request.setDestinationUri(destination);
+                //request.setDestinationInExternalFilesDir(context,Environment.DIRECTORY_DOCUMENTS,resourceLocation.getAbsolutePath()+"/"+data.get(position).getFileName()+"."+data.get(position).getFileType().toLowerCase());
                 //in the firebase database use the complete file name in module's name field
-                request.setDestinationInExternalPublicDir(myApp.getAbsolutePath(),data.get(position).getFileName()+"."+data.get(position).getFileType().toLowerCase());
+                //request.setDestinationInExternalPublicDir(resourceLocation.getAbsolutePath(),data.get(position).getFileName()+"."+data.get(position).getFileType().toLowerCase());
                 request.setMimeType(getMimeType(data.get(position).getFile()));
 
                 DownloadManager manager = (DownloadManager) v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
