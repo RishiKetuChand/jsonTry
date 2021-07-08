@@ -39,6 +39,13 @@
     <string name="download">Download</string>
 
 
+    <string name="vtu4u">Vtu4u Result</string>
+    <string name="vtuResult">VTU Official Website</string>
+    <string name="checkResult">Check Result</string>
+    <string name="resultOf4XX19ISXXX">You can directly view result Of 4XX19ISXXX</string>
+    <string name="viewResultOf4XX19ISXXX">View result Of 4XX19ISXXX</string>
+
+
     <string name="title_activity_main">MainActivity</string>
 
     <string name="first_fragment_label">First Fragment</string>

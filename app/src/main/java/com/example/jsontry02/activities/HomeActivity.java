@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.example.jsontry02.R;
 import com.example.jsontry02.dto.Course;
+import com.example.jsontry02.dto.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,13 @@ public class HomeActivity extends AppCompatActivity {
                 bundle.putParcelableArrayList("coursesList", (ArrayList<? extends Parcelable>) courseData);
                 activityIntent.putExtras(bundle);
                 startActivity(activityIntent);
+            }
+        });
+        resultCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(HomeActivity.this, ResultActivity.class);
+                startActivity(i);
             }
         });
     }

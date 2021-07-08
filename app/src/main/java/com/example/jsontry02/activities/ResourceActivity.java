@@ -21,6 +21,7 @@ import com.example.jsontry02.adapters.SubjectAdapter;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
+import com.example.jsontry02.dto.Result;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.utilities.ApiHelper;
 import com.example.jsontry02.utilities.ServerCallback;
@@ -84,6 +85,12 @@ public class ResourceActivity extends AppCompatActivity implements ServerCallbac
         adapter.notifyDataSetChanged();
 
     }
+
+    @Override
+    public void onResultReceived(List<Result> data) {
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
