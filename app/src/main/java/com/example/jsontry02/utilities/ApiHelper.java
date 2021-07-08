@@ -7,11 +7,13 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.jsontry02.activities.ModulesActivity;
 import com.example.jsontry02.activities.ResourceActivity;
+import com.example.jsontry02.activities.ResultActivity;
 import com.example.jsontry02.activities.SplashscreenActivity;
 import com.example.jsontry02.activities.SubjectActivity;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
+import com.example.jsontry02.dto.Result;
 import com.example.jsontry02.dto.Subject;
 
 import org.json.JSONException;
@@ -31,6 +33,8 @@ public class ApiHelper {
 	private static final String MODULE_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/main/modules/";
 	private static final String RESOURCE_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/main/resources%20/";
 	private static final String COURSE_ENDPOINT ="/courses.json";
+	private static final String RESULT_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/Result";
+	private static final String RESULT_ENDPOINT ="/result001.json";
 	public void fetchCources(SplashscreenActivity splashscreenActivity){
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,BASE_URL+COURSE_ENDPOINT,null, new Response.Listener<JSONObject>() {
 			@Override
@@ -180,5 +184,41 @@ public class ApiHelper {
 		}
 		resourceActivity.onResourceDataReceived(resources);
 	}
+	public void fetchResult(ResultActivity resultActivity) {
+		String url = RESULT_BASE+".json";
+		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				processResult(response,resultActivity);
+			}
+		},null);
+		VolleySingleton.getInstance(context).getRequestQueue().add(jsonObjectRequest);
 
+	}
+
+	private void processResult(JSONObject response, ResultActivity resultActivity) {
+		List<Result> results = new ArrayList<>();
+		if(null != response){
+			Iterator<String> keys = response.keys();
+
+			while(keys.hasNext()) {
+				String key = keys.next();
+				try {
+					if (response.get(key) instanceof JSONObject) {
+						// do something with jsonObject here
+						JSONObject temp = response.getJSONObject(key);
+						Result  result = new Result();
+						result.setVtu4u(temp.getString("vtu4u"));
+						result.setOfficialWebResult(temp.getString("officialWebResult"));
+						result.setCustomRes001(temp.getString("customRes001"));
+						result.setCustomRes002(temp.getString("customRes002"));
+						results.add(result);
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		resultActivity.onResultReceived(results);
+	}
 }

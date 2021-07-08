@@ -12,10 +12,18 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.ResourceActivity"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activities.ResultWebViewActivity"
+            android:label="ResultWebView"
+            android:parentActivityName=".activities.ResultActivity"/>
+        <activity android:name=".activities.ResultActivity"
+            android:label="@string/result"
+            android:parentActivityName=".activities.HomeActivity"/>
+        <activity
+            android:name=".activities.ResourceActivity"
             android:label="@string/resources"
-            android:parentActivityName=".activities.ModulesActivity"/>
+            android:parentActivityName=".activities.ModulesActivity" />
         <activity android:name=".activities.HomeActivity" />
 
         <receiver android:name=".utilities.ConnectivityCheck">
@@ -45,7 +53,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/courses"
-            android:parentActivityName=".activities.SplashscreenActivity"/>
+            android:parentActivityName=".activities.SplashscreenActivity" />
     </application>
 
 </manifest>
