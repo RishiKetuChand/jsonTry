@@ -5,6 +5,7 @@
     <string name="subjects">Subjects</string>
     <string name="modules">Modules</string>
     <string name="resources">Resources</string>
+    <string name="sgpaCalculator">SGPA Calculator</string>
 
     <string name="sem3">3rd Sem</string>
     <string name="sem4">4th Sem</string>
@@ -13,6 +14,7 @@
     <string name="sem7">7th Sem</string>
     <string name="sem8">8th Sem</string>
     <string name="allSem">All Sem</string>
+    <string name="semester">Semester</string>
 
     <string name="filter">Filter</string>
     <string name="search">Search</string>
@@ -27,11 +29,19 @@
     <string name="type">Type:</string>
 
 
+    <string name="branch">Branch</string>
+    <string name="branch_semicolon">Branch:</string>
+    <string name="semester_semicolon">Sem:</string>
+    <string name="subject_semicolon">Subject:</string>
+    <string name="related_semicolon">Related Topic:</string>
+    <string name="viewVideo">View Video</string>
+
     <string name="notes">Notes</string>
     <string name="quizzer">Quizzer</string>
     <string name="time_table">Timer</string>
     <string name="result">Result</string>
     <string name="tips">Tips</string>
+    <string name="sgpaCalu">SGPA</string>
     <string name="books">Books</string>
     <string name="videos">Videos</string>
     <string name="complaints">Review</string>
@@ -44,6 +54,527 @@
     <string name="checkResult">Check Result</string>
     <string name="resultOf4XX19ISXXX">You can directly view result Of 4XX19ISXXX</string>
     <string name="viewResultOf4XX19ISXXX">View result Of 4XX19ISXXX</string>
+
+    <string name="calculateSGPA">Calculate SGPA</string>
+    <string name="reset">Reset</string>
+    <string name="marks">Marks</string>
+    <string name="total">Total:</string>
+    <string name="percentage">Percentage:</string>
+    <string name="sgpa">SGPA:</string>
+
+
+    <string name="mat11">18MAT11 :</string>
+    <string name="che12">18CHE12 :</string>
+    <string name="cpc13">18CPC13 :</string>
+    <string name="eln14">18ELN14 :</string>
+    <string name="me15">18ME15 :</string>
+    <string name="chel16">18CHEL16 :</string>
+    <string name="cpcl17">18CPCL17 :</string>
+
+    <string name="che22">18CHE22 :</string>
+    <string name="cpc23">18CPC23 :</string>
+    <string name="eln24">18ELN24 :</string>
+    <string name="me25">18ME25 :</string>
+    <string name="chel26">18CHEL26 :</string>
+    <string name="cpcl27">18CPCL27 :</string>
+
+    <string name="phy12">18PHY12 :</string>
+    <string name="ele13">18ELE13 :</string>
+    <string name="civ14">18CIV14 :</string>
+    <string name="egdl15">18EGDL15 :</string>
+    <string name="phyl16">18PHYL16 :</string>
+    <string name="elel17">18ELEL17 :</string>
+    <string name="egh18">18EGH18 :</string>
+
+    <string name="mat21">18MAT21 :</string>
+    <string name="phy22">18PHY22 :</string>
+    <string name="ele23">18ELE23 :</string>
+    <string name="civ24">18CIV24 :</string>
+    <string name="egdl25">18EGDL25 :</string>
+    <string name="phyl26">18PHYL26 :</string>
+    <string name="elel27">18ELEL27 :</string>
+    <string name="egh28">18EGH28 :</string>
+
+
+    <string name="mat31">18MAT31 :</string>
+    <string name="ec32">18EC32 :</string>
+    <string name="ec33">18EC33 :</string>
+    <string name="ec34">18EC34 :</string>
+    <string name="ec35">18EC35 :</string>
+    <string name="ec36">18EC36 :</string>
+    <string name="ecl37">18ECL37 :</string>
+    <string name="ecl38">18ECL38 :</string>
+    <string name="xx39">18XXX39 :</string>
+
+
+    <string name="ec42">18EC42 :</string>
+    <string name="ec43">18EC43 :</string>
+    <string name="ec44">18EC44 :</string>
+    <string name="ec45">18EC45 :</string>
+    <string name="ec46">18EC46 :</string>
+    <string name="ecl47">18ECL47 :</string>
+    <string name="ecl48">18ECL48 :</string>
+    <string name="xx49">18XXX49 :</string>
+
+    <string name="es51">18ES51 :</string>
+    <string name="ec52">18EC52 :</string>
+    <string name="ec53">18EC53 :</string>
+    <string name="ec54">18EC54 :</string>
+    <string name="ec55">18EC55 :</string>
+    <string name="ec56">18EC56 :</string>
+    <string name="ecl57">18ECL57 :</string>
+    <string name="ecl58">18ECL58 :</string>
+    <string name="civ59">18CIV59 :</string>
+
+
+    <string name="ec61">18EC61 :</string>
+    <string name="ec62">18EC62 :</string>
+    <string name="ec63">18EC63 :</string>
+    <string name="xx64x">18XX64X :</string>
+    <string name="xx65x">18XX65X :</string>
+    <string name="ecl66">18ECL66 :</string>
+    <string name="ecl67">18ECL67 :</string>
+    <string name="ecmp68">18ECMP68 :</string>
+
+    <string name="ec71">18EC71 :</string>
+    <string name="ec72">18EC72 :</string>
+    <string name="xx73x">18XX73X :</string>
+    <string name="xx74x">18XX74X :</string>
+    <string name="xx75x">18XX75X :</string>
+    <string name="ecl76">18ECL76 :</string>
+    <string name="ecl77">18ECL77 :</string>
+    <string name="ecp78">18ECP78 :</string>
+
+    <string name="ec81">18EC81 :</string>
+    <string name="xx82x">18XX82X :</string>
+    <string name="ecp83">18ECP83 :</string>
+    <string name="ecs84">18ECS84 :</string>
+    <string name="eci85">18ECI85 :</string>
+
+    // IS and CS Department
+
+    <string name="cs32">18CS32 :</string>
+    <string name="cs33">18CS33 :</string>
+    <string name="cs34">18CS34 :</string>
+    <string name="cs35">18CS35 :</string>
+    <string name="cs36">18CS36 :</string>
+    <string name="csl37">18CSL37 :</string>
+    <string name="csl38">18CSL38 :</string>
+
+
+    <string name="cs42">18CS42 :</string>
+    <string name="cs43">18CS43 :</string>
+    <string name="cs44">18CS44 :</string>
+    <string name="cs45">18CS45 :</string>
+    <string name="cs46">18CS46 :</string>
+    <string name="csl47">18CSL47 :</string>
+    <string name="csl48">18CSL48 :</string>
+
+    <string name="cs51">18CS51 :</string>
+    <string name="cs52">18CS52 :</string>
+    <string name="cs53">18CS53 :</string>
+    <string name="cs54">18CS54 :</string>
+    <string name="cs55">18CS55 :</string>
+    <string name="cs56">18CS56 :</string>
+    <string name="csl57">18CSL57 :</string>
+    <string name="csl58">18CSL58 :</string>
+
+
+    <string name="is61">18IS61 :</string>
+    <string name="is62">18IS62 :</string>
+
+    <string name="cs61">18CS61 :</string>
+    <string name="cs62">18CS62 :</string>
+    <string name="cs63">18CS63 :</string>
+    <string name="cs64x">18CS64X :</string>
+    <string name="cs65x">18CS65X :</string>
+    <string name="isl66">18ISL66 :</string>
+    <string name="isl67">18ISL67 :</string>
+
+    <string name="csl66">18CSL66 :</string>
+    <string name="csl67">18CSL67 :</string>
+    <string name="csmp68">18CSMP68 :</string>
+
+    <string name="cs71">18CS71 :</string>
+    <string name="cs72">18CS72 :</string>
+    <string name="cs73x">18CS73X :</string>
+    <string name="cs74x">18CS74X :</string>
+    <string name="cs75x">18CS75X :</string>
+    <string name="csl76">18CSL76 :</string>
+    <string name="csp77">18CSP77 :</string>
+
+    <string name="cs81">18CS81 :</string>
+    <string name="cs82x">18CS82X :</string>
+    <string name="csp83">18CSP83 :</string>
+    <string name="css84">18CSS84 :</string>
+    <string name="csi85">18CSI85 :</string>
+
+
+    // Mechnical Enigneering
+
+    <string name="ME32">18ME32 :</string>
+    <string name="ME33">18ME33 :</string>
+    <string name="ME34">18ME34 :</string>
+    <string name="ME35">18ME35 :</string>
+    <string name="ME36">18ME36 :</string>
+    <string name="MEL37">18MEL37 :</string>
+    <string name="MEL38">18MEL38 :</string>
+
+
+    <string name="ME42">18ME42 :</string>
+    <string name="ME43">18ME43 :</string>
+    <string name="ME44">18ME44 :</string>
+    <string name="ME45">18ME45 :</string>
+    <string name="ME46">18ME46 :</string>
+    <string name="MEL47">18MEL47 :</string>
+    <string name="MEL48">18MEL48 :</string>
+
+    <string name="ME51">18ME51 :</string>
+    <string name="ME52">18ME52 :</string>
+    <string name="ME53">18ME53 :</string>
+    <string name="ME54">18ME54 :</string>
+    <string name="ME55">18ME55 :</string>
+    <string name="ME56">18ME56 :</string>
+    <string name="MEL57">18MEL57 :</string>
+    <string name="MEL58">18MEL58 :</string>
+
+
+    <string name="ME61">18ME61 :</string>
+    <string name="ME62">18ME62 :</string>
+    <string name="ME63">18ME63 :</string>
+    <string name="ME64X">18ME64X :</string>
+    <string name="ME65X">18ME65X :</string>
+    <string name="MEL66">18MEL66 :</string>
+    <string name="MEL67">18MEL67 :</string>
+    <string name="MEMP68">18MEMP68 :</string>
+
+    <string name="ME71">18ME71 :</string>
+    <string name="ME72">18ME72 :</string>
+    <string name="ME73X">18ME73X :</string>
+    <string name="ME74X">18ME74X :</string>
+    <string name="ME75X">18ME75X :</string>
+    <string name="MEL76">18MEL76 :</string>
+    <string name="MEL77">18MEL77 :</string>
+    <string name="MEP78">18MEP78 :</string>
+
+    <string name="ME81">18ME81 :</string>
+    <string name="ME82X">18ME82X :</string>
+    <string name="MEP83">18MEP83 :</string>
+    <string name="MME84">18MME84 :</string>
+    <string name="MEI85">18MEI85 :</string>
+
+
+    // Electrical
+
+    <string name="ee32">18EE32 :</string>
+    <string name="ee33">18EE33 :</string>
+    <string name="ee34">18EE34 :</string>
+    <string name="ee35">18EE35 :</string>
+    <string name="ee36">18EE36 :</string>
+    <string name="eel37">18EEL37 :</string>
+    <string name="eel38">18EEL38 :</string>
+
+
+    <string name="ee42">18EE42 :</string>
+    <string name="ee43">18EE43 :</string>
+    <string name="ee44">18EE44 :</string>
+    <string name="ee45">18EE45 :</string>
+    <string name="ee46">18EE46 :</string>
+    <string name="eel47">18EEL47 :</string>
+    <string name="eel48">18EEL48 :</string>
+
+
+    <string name="ee51">18EE51 :</string>
+    <string name="ee52">18EE52 :</string>
+    <string name="ee53">18EE53 :</string>
+    <string name="ee54">18EE54 :</string>
+    <string name="ee55">18EE55 :</string>
+    <string name="ee56">18EE56 :</string>
+    <string name="eel57">18EEL57 :</string>
+    <string name="eel58">18EEL58 :</string>
+
+
+    <string name="ee61">18EE61 :</string>
+    <string name="ee62">18EE62 :</string>
+    <string name="ee63">18EE63 :</string>
+    <string name="ee64x">18EE64X :</string>
+    <string name="ee65x">18EE65X :</string>
+    <string name="eel66">18EEL66 :</string>
+    <string name="eel67">18EEL67 :</string>
+    <string name="eemp68">18EEMP68 :</string>
+
+    <string name="ee71">18EE71 :</string>
+    <string name="ee72">18EE72 :</string>
+    <string name="ee73x">18EE73X :</string>
+    <string name="ee74x">18EE74X :</string>
+    <string name="ee75x">18EE75X :</string>
+    <string name="eel76">18EEL76 :</string>
+    <string name="eel77">18EEL77 :</string>
+    <string name="eep78">18EEP78 :</string>
+
+    <string name="ee81">18EE81 :</string>
+    <string name="ee82x">18EE82X :</string>
+    <string name="eep83">18EEP83 :</string>
+    <string name="ees84">18EES84 :</string>
+    <string name="eei85">18EEI85 :</string>
+
+    // EI
+    <string name="EI32">18EI32 :</string>
+    <string name="EI33">18EI33 :</string>
+    <string name="EI34">18EI34 :</string>
+    <string name="EI35">18EI35 :</string>
+    <string name="EI36">18EI36 :</string>
+    <string name="EIL37">18EIL37 :</string>
+    <string name="EIL38">18EIL38 :</string>
+
+
+    <string name="EI42">18EI42 :</string>
+    <string name="EI43">18EI43 :</string>
+    <string name="EI44">18EI44 :</string>
+    <string name="EI45">18EI45 :</string>
+    <string name="EI46">18EI46 :</string>
+    <string name="EIL47">18EIL47 :</string>
+    <string name="EIL48">18EIL48 :</string>
+
+
+    <string name="EI51">18EI51 :</string>
+    <string name="EI52">18EI52 :</string>
+    <string name="EI53">18EI53 :</string>
+    <string name="EI54">18EI54 :</string>
+    <string name="EI55">18EI55 :</string>
+    <string name="EI56">18EI56 :</string>
+    <string name="EIL57">18EIL57 :</string>
+    <string name="EIL58">18EIL58 :</string>
+
+
+    <string name="EI61">18EI61 :</string>
+    <string name="EI62">18EI62 :</string>
+    <string name="EI63">18EI63 :</string>
+    <string name="EI64X">18EI64X :</string>
+    <string name="EI65X">18EI65X :</string>
+    <string name="EIL66">18EIL66 :</string>
+    <string name="EIL67">18EIL67 :</string>
+    <string name="EIMP68">18EIMP68 :</string>
+
+    <string name="EI71">18EI71 :</string>
+    <string name="EI72">18EI72 :</string>
+    <string name="EI73X">18EI73X :</string>
+    <string name="EI74X">18EI74X :</string>
+    <string name="EI75X">18EI75X :</string>
+    <string name="EIL76">18EIL76 :</string>
+    <string name="EIL77">18EIL77 :</string>
+    <string name="EIP78">18EIP78 :</string>
+
+    <string name="EI81">18EI81 :</string>
+    <string name="EI82X">18EI82X :</string>
+    <string name="EIP83">18EIP83 :</string>
+    <string name="EIS84">18EIS84 :</string>
+    <string name="EII85">18EII85 :</string>
+
+
+    //Civil
+    <string name="cv32">18CV32 :</string>
+    <string name="cv33">18CV33 :</string>
+    <string name="cv34">18CV34 :</string>
+    <string name="cv35">18CV35 :</string>
+    <string name="cv36">18CV36 :</string>
+    <string name="cvl37">18CVL37 :</string>
+    <string name="cvl38">18CVL38 :</string>
+
+
+    <string name="mat41">18MAT41 :</string>
+    <string name="cv42">18CV42 :</string>
+    <string name="cv43">18CV43 :</string>
+    <string name="cv44">18CV44 :</string>
+    <string name="cv45">18CV45 :</string>
+    <string name="cv46">18CV46 :</string>
+    <string name="cvl47">18CVL47 :</string>
+    <string name="cvl48">18CVL48 :</string>
+
+    <string name="cv51">18CV51 :</string>
+    <string name="cv52">18CV52 :</string>
+    <string name="cv53">18CV53 :</string>
+    <string name="cv54">18CV54 :</string>
+    <string name="cv55">18CV55 :</string>
+    <string name="cv56">18CV56 :</string>
+    <string name="cvl57">18CVL57 :</string>
+    <string name="cvl58">18CVL58 :</string>
+
+
+    <string name="cv61">18CV61 :</string>
+    <string name="cv62">18CV62 :</string>
+    <string name="cv63">18CV63 :</string>
+    <string name="cv64x">18CV64X :</string>
+    <string name="cv65x">18CV65X :</string>
+    <string name="cvl66">18CVL66 :</string>
+    <string name="cvl67">18CVL67 :</string>
+    <string name="cvep68">18CVEP68 :</string>
+
+    <string name="cv71">18CV71 :</string>
+    <string name="cv72">18CV72 :</string>
+    <string name="cv73x">18CV73X :</string>
+    <string name="cv74x">18CV74X :</string>
+    <string name="cv75x">18CV75X :</string>
+    <string name="cvl76">18CVL76 :</string>
+    <string name="cvl77">18CVL77 :</string>
+    <string name="cvp78">18CVP78 :</string>
+
+    <string name="cv81">18CV81 :</string>
+    <string name="cv82x">18CV82X :</string>
+    <string name="cvp83">18CVP83 :</string>
+    <string name="cvs84">18CVS84 :</string>
+    <string name="cvi85">18CVI85 :</string>
+
+
+    // Textile Department
+    <string name="TX31">18TX31 :</string>
+    <string name="TX32">18TX32 :</string>
+    <string name="TX33">18TX33 :</string>
+    <string name="TX34">18TX34 :</string>
+    <string name="TX35">18TX35 :</string>
+    <string name="TX36">18TX36 :</string>
+    <string name="TXL37">18TXL37 :</string>
+    <string name="TXL38">18TXL38 :</string>
+
+
+    <string name="TX41">18TX41 :</string>
+    <string name="TX42">18TX42 :</string>
+    <string name="TX43">18TX43 :</string>
+    <string name="TX44">18TX44 :</string>
+    <string name="TX45">18TX45 :</string>
+    <string name="TX46">18TX46 :</string>
+    <string name="TXL47">18TXL47 :</string>
+    <string name="TXL48">18TXL48 :</string>
+
+    <string name="TX51">18TX51 :</string>
+    <string name="TX52">18TX52 :</string>
+    <string name="TX53">18TX53 :</string>
+    <string name="TX54">18TX54 :</string>
+    <string name="TX55">18TX55 :</string>
+    <string name="TX56">18TX56 :</string>
+    <string name="TXL57">18TXL57 :</string>
+    <string name="TXL58">18TXL58 :</string>
+    <string name="CIV59">18CIV59 :</string>
+
+
+    <string name="TX61">18TX61 :</string>
+    <string name="TX62">18TX62 :</string>
+    <string name="TX63">18TX63 :</string>
+    <string name="TX64x">18TX64X :</string>
+    <string name="TX65x">18TX65X :</string>
+    <string name="TXL66">18TXL66 :</string>
+    <string name="TXL67">18TXL67 :</string>
+    <string name="TXMP68">18TXMP68 :</string>
+
+    <string name="TX71">18TX71 :</string>
+    <string name="TX72">18TX72 :</string>
+    <string name="TX73x">18TX73X :</string>
+    <string name="TX74x">18TX74X :</string>
+    <string name="TX75x">18TX75X :</string>
+    <string name="TXL76">18TXL76 :</string>
+    <string name="TXP77">18TXP77 :</string>
+
+    <string name="TX81">18TX81 :</string>
+    <string name="TX82x">18TX82X :</string>
+    <string name="TXP83">18TXP83 :</string>
+    <string name="TXS84">18TXS84 :</string>
+    <string name="TXI85">18TXI85 :</string>
+
+
+    // BioTech Department
+
+    <string name="BT31">18BT31 :</string>
+    <string name="BT32">18BT32 :</string>
+    <string name="BT33">18BT33 :</string>
+    <string name="BT34">18BT34 :</string>
+    <string name="BT35">18BT35 :</string>
+    <string name="BT36">18BT36 :</string>
+    <string name="BTL37">18BTL37 :</string>
+    <string name="BTL38">18BTL38 :</string>
+
+
+    <string name="BT41">18BT41 :</string>
+    <string name="BT42">18BT42 :</string>
+    <string name="BT43">18BT43 :</string>
+    <string name="BT44">18BT44 :</string>
+    <string name="BT45">18BT45 :</string>
+    <string name="BT46">18BT46 :</string>
+    <string name="BTL47">18BTL47 :</string>
+    <string name="BTL48">18BTL48 :</string>
+
+    <string name="BT51">18BT51 :</string>
+    <string name="BT52">18BT52 :</string>
+    <string name="BT53">18BT53 :</string>
+    <string name="BT54">18BT54 :</string>
+    <string name="BT55">18BT55 :</string>
+    <string name="BT56">18BT56 :</string>
+    <string name="BTL57">18BTL57 :</string>
+    <string name="BTL58">18BTL58 :</string>
+
+
+    <string name="BT61">18BT61 :</string>
+    <string name="BT62">18BT62 :</string>
+    <string name="BT63">18BT63 :</string>
+    <string name="BT64x">18BT64X :</string>
+    <string name="BT65x">18BT65X :</string>
+    <string name="BTL66">18BTL66 :</string>
+    <string name="BTL67">18BTL67 :</string>
+    <string name="BTMP68">18BTMP68 :</string>
+
+    <string name="BT71">18BT71 :</string>
+    <string name="BT72">18BT72 :</string>
+    <string name="BT73x">18BT73X :</string>
+    <string name="BT74x">18BT74X :</string>
+    <string name="BT75x">18BT75X :</string>
+    <string name="BTL76">18BTL76 :</string>
+    <string name="BTP77">18BTP77 :</string>
+
+    <string name="BT81">18BT81 :</string>
+    <string name="BT82x">18BT82X :</string>
+    <string name="BTP83">18BTP83 :</string>
+    <string name="BTS84">18BTS84 :</string>
+    <string name="BTI85">18BTI85 :</string>
+
+    // AI and Machine Learning
+
+    <string name="AI52">18AI52 :</string>
+    <string name="AI55">18AI55 :</string>
+    <string name="AI56">18AI56 :</string>
+    <string name="AIL57">18AIL57 :</string>
+
+    <string name="AI61">18AI61 :</string>
+    <string name="AI62">18AI62 :</string>
+    <string name="AI63">18AI63 :</string>
+    <string name="AI64X">18AI64X :</string>
+    <string name="AI65X">18AI65X :</string>
+    <string name="AIL66">18AIL66 :</string>
+    <string name="AIL67">18AIL67 :</string>
+    <string name="AIMP68">18AIMP68 :</string>
+
+    <string name="AI71">18AI71 :</string>
+    <string name="AI72">18AI72 :</string>
+    <string name="AI73X">18AI73X :</string>
+    <string name="AI74X">18AI74X :</string>
+    <string name="AI75X">18AI75X :</string>
+    <string name="AIL76">18AIL76 :</string>
+    <string name="AIP77">18AIP77 :</string>
+
+    <string name="AI81">18AI81 :</string>
+    <string name="AI82X">18AI82X :</string>
+    <string name="AIP83">18AIP83 :</string>
+    <string name="AAI84">18AAI84 :</string>
+    <string name="AII85">18AII85 :</string>
+
+    // Default Subjects
+    <string name="default01">18XX31 :</string>
+    <string name="default02">18XX32 :</string>
+    <string name="default03">18XX33 :</string>
+    <string name="default04">18XX34 :</string>
+    <string name="default05">18XX35 :</string>
+    <string name="default06">18XX36 :</string>
+    <string name="default07">18XX37 :</string>
+    <string name="default08">18XX38 :</string>
+    <string name="default09">18XX39 :</string>
 
 
     <string name="title_activity_main">MainActivity</string>
@@ -66,4 +597,33 @@
         <item name="sem7">7th Sem</item>
         <item name="sem8">8th Sem</item>
     </string-array>
+
+    <string-array name="AllSem">
+        <item name="sem1">1st Sem</item>
+        <item name="sem2">2nd Sem</item>
+        <item name="sem3">3rd Sem</item>
+        <item name="sem4">4th Sem</item>
+        <item name="sem5">5th Sem</item>
+        <item name="sem6">6th Sem</item>
+        <item name="sem7">7th Sem</item>
+        <item name="sem8">8th Sem</item>
+    </string-array>
+    <string-array name="AllBranch">
+        <item name="ai">AI</item>
+        <item name="bio">BT</item>
+        <item name="cs">CS</item>
+        <item name="cv">CV</item>
+        <item name="ec">EC</item>
+        <item name="ee">EE</item>
+        <item name="ei">EI</item>
+        <item name="is">IS</item>
+        <item name="me">ME</item>
+        <item name="tx">TX</item>
+    </string-array>
+
+    <string-array name="FirstYear">
+        <item name="phy">Physics Cycle</item>
+        <item name="che">Chemistry Cycle</item>
+    </string-array>
+
 </resources>

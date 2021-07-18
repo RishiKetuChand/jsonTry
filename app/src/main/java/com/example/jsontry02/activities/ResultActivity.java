@@ -2,6 +2,7 @@ package com.example.jsontry02.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Result;
 import com.example.jsontry02.dto.Subject;
+import com.example.jsontry02.dto.Videos;
 import com.example.jsontry02.utilities.ApiHelper;
 import com.example.jsontry02.utilities.ServerCallback;
 
@@ -29,6 +31,7 @@ public class ResultActivity extends AppCompatActivity implements ServerCallback 
     TextView customUSNResultText;
     Toolbar toolbar;
     Bundle bundle = new Bundle();
+    CardView cardView, cardView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,8 @@ public class ResultActivity extends AppCompatActivity implements ServerCallback 
         customUSNResult=findViewById(R.id.customResultView);
         officialSiteResult=findViewById(R.id.officialWebsiteResult);
         customUSNResultText=findViewById(R.id.usnText);
+        cardView=findViewById(R.id.cardView);
+        cardView2=findViewById(R.id.cardView2);
 
 
         ApiHelper apiHelper = new ApiHelper(this);
@@ -105,11 +110,15 @@ public class ResultActivity extends AppCompatActivity implements ServerCallback 
 
     @Override
     public void onResultReceived(List<Result> data) {
-        vtu4uResult.setClickable(true);
-        customUSNResult.setClickable(true);
-        officialSiteResult.setClickable(true);
         animationView.setVisibility(View.GONE);
+        cardView.setVisibility(View.VISIBLE);
+        cardView2.setVisibility(View.VISIBLE);
         bundle.putParcelableArrayList("resultData", (ArrayList<? extends Parcelable>) data);
+
+    }
+
+    @Override
+    public void onVideoReceived(List<Videos> data) {
 
     }
 }

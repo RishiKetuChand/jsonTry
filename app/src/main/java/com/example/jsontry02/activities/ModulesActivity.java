@@ -22,6 +22,7 @@ import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Result;
 import com.example.jsontry02.dto.Subject;
+import com.example.jsontry02.dto.Videos;
 import com.example.jsontry02.utilities.ApiHelper;
 import com.example.jsontry02.utilities.PreferenceManager;
 import com.example.jsontry02.utilities.ServerCallback;
@@ -133,6 +134,11 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
 
     @Override
     public void onResultReceived(List<Result> data) {
+
+    }
+
+    @Override
+    public void onVideoReceived(List<Videos> data) {
 
     }
 

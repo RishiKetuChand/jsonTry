@@ -10,13 +10,12 @@ import android.view.View;
 
 import com.example.jsontry02.R;
 import com.example.jsontry02.dto.Course;
-import com.example.jsontry02.dto.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-    CardView notesCard, quizzerCard, timerCard,resultCard,tipsCard,booksCard,videoCard,reviewCard;
+    CardView notesCard, quizzerCard, timerCard,resultCard,sgpaCard,booksCard,videoCard,reviewCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         quizzerCard=findViewById(R.id.quizzer_card);
         timerCard=findViewById(R.id.timeTable_card);
         resultCard=findViewById(R.id.result_card);
-        tipsCard=findViewById(R.id.tips_card);
+        sgpaCard=findViewById(R.id.sgpa_card);
         booksCard=findViewById(R.id.books_card);
         videoCard=findViewById(R.id.video_card);
         reviewCard=findViewById(R.id.complaints_card);
@@ -46,6 +45,21 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(HomeActivity.this, ResultActivity.class);
+                startActivity(i);
+            }
+        });
+
+        sgpaCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(HomeActivity.this, SgpaCaluActivity.class);
+                startActivity(i);
+            }
+        });
+        videoCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(HomeActivity.this, VideoActivity.class);
                 startActivity(i);
             }
         });

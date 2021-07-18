@@ -31,7 +31,8 @@
         app:cardUseCompatPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/result_toolbar"
+        android:visibility="invisible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -66,8 +67,7 @@
                 app:backgroundTint="@color/bg_color_for_item"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vtu4uWebsiteName"
-                android:clickable="false"/>
+                app:layout_constraintTop_toBottomOf="@+id/vtu4uWebsiteName"/>
 
             <TextView
                 android:id="@+id/usnText"
@@ -96,8 +96,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/usnText"
-                android:clickable="false"/>
+                app:layout_constraintTop_toBottomOf="@+id/usnText"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,7 +114,8 @@
         app:cardUseCompatPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        android:visibility="invisible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -136,8 +136,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/officialWebsite"
-                android:clickable="false"/>
+                app:layout_constraintTop_toBottomOf="@+id/officialWebsite"/>
 
             <TextView
                 android:id="@+id/officialWebsite"

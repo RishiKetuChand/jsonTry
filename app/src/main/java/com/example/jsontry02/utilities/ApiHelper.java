@@ -1,6 +1,7 @@
 package com.example.jsontry02.utilities;
 
 import android.content.Context;
+import android.provider.MediaStore;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -10,11 +11,13 @@ import com.example.jsontry02.activities.ResourceActivity;
 import com.example.jsontry02.activities.ResultActivity;
 import com.example.jsontry02.activities.SplashscreenActivity;
 import com.example.jsontry02.activities.SubjectActivity;
+import com.example.jsontry02.activities.VideoActivity;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Result;
 import com.example.jsontry02.dto.Subject;
+import com.example.jsontry02.dto.Videos;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +38,7 @@ public class ApiHelper {
 	private static final String COURSE_ENDPOINT ="/courses.json";
 	private static final String RESULT_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/Result";
 	private static final String RESULT_ENDPOINT ="/result001.json";
+	private static final String YOUTUBE_VIDEO ="https://college-notes-188a4-default-rtdb.firebaseio.com/YouTube_Video.json";
 	public void fetchCources(SplashscreenActivity splashscreenActivity){
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,BASE_URL+COURSE_ENDPOINT,null, new Response.Listener<JSONObject>() {
 			@Override
@@ -220,5 +224,45 @@ public class ApiHelper {
 			}
 		}
 		resultActivity.onResultReceived(results);
+	}
+
+	public void fetchVideos(VideoActivity videoActivity){
+		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,YOUTUBE_VIDEO,null, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				processVideos(response,videoActivity);
+			}
+		},null);
+		VolleySingleton.getInstance(context).getRequestQueue().add(jsonObjectRequest);
+
+	}
+
+	private void processVideos(JSONObject response,VideoActivity videoActivity) {
+		List<Videos> videos = new ArrayList<>();
+		if(null != response){
+			Iterator<String> keys = response.keys();
+
+			while(keys.hasNext()) {
+				String key = keys.next();
+				try {
+					if (response.get(key) instanceof JSONObject) {
+						// do something with jsonObject here
+						JSONObject temp = response.getJSONObject(key);
+						Videos video = new Videos();
+						video.setVideoId(temp.getString("id"));
+						video.setVideoTitle(temp.getString("title"));
+						video.setVideoBranch(temp.getString("branch"));
+						video.setVideoSem(temp.getString("sem"));
+						video.setVideoSubject(temp.getString("sub"));
+						video.setVideoCoveredTopic(temp.getString("relatedTopic"));
+						video.setVideoResId(temp.getString("resId"));
+						videos.add(video);
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		videoActivity.onVideoReceived(videos);
 	}
 }
