@@ -49,4 +49,34 @@ public class PreferenceManager {
 		SharedPreferences sharedPreferences =context.getSharedPreferences("MySharedPref",MODE_PRIVATE);
 		return sharedPreferences.getString(SUBJECT_ID,"");
 	}
+	public void saveUserData(String userName,String userEmail,String userPhoneNumber, String userUSN, String userCollege){
+		SharedPreferences sharedPreferences =context.getSharedPreferences("UserSharedPref",MODE_PRIVATE);
+		SharedPreferences.Editor myEditer = sharedPreferences.edit();
+		myEditer.putString("userName",userName);
+		myEditer.putString("userEmail",userEmail);
+		myEditer.putString("userUSN",userUSN);
+		myEditer.putString("userPhoneNumber",userPhoneNumber);
+		myEditer.putString("userCollege",userCollege);
+		myEditer.commit();
+	}
+	public String getUserName(){
+		SharedPreferences sharedPreferences =context.getSharedPreferences("UserSharedPref",MODE_PRIVATE);
+		return sharedPreferences.getString("userName","");
+	}
+	public String getUserEmail(){
+		SharedPreferences sharedPreferences =context.getSharedPreferences("UserSharedPref",MODE_PRIVATE);
+		return sharedPreferences.getString("userEmail","");
+	}
+	public String getUserUSN(){
+		SharedPreferences sharedPreferences =context.getSharedPreferences("UserSharedPref",MODE_PRIVATE);
+		return sharedPreferences.getString("userUSN","");
+	}
+	public String getUserPhoneNumber(){
+		SharedPreferences sharedPreferences =context.getSharedPreferences("UserSharedPref",MODE_PRIVATE);
+		return sharedPreferences.getString("userPhoneNumber","");
+	}
+	public String getUserCollege(){
+		SharedPreferences sharedPreferences =context.getSharedPreferences("UserSharedPref",MODE_PRIVATE);
+		return sharedPreferences.getString("userCollege","");
+	}
 }

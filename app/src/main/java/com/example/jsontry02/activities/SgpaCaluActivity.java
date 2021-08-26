@@ -1,6 +1,7 @@
 package com.example.jsontry02.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jsontry02.R;
 import com.example.jsontry02.branchDetails.allBranchSubjectCode;
@@ -27,11 +29,13 @@ public class SgpaCaluActivity extends AppCompatActivity {
     Button reset,calcuSgpa;
     PowerSpinnerView semesterList, branchList;
     CardView cardView;
+    Toolbar toolbar;
     int sub1,sub2,sub3,sub4,sub5,sub6,sub7,sub8,sub9,total;
     double sgpa,percentage;
     String selectedSem, selectedBranch;
     CalculatorSGPA calculatorSGPA= new CalculatorSGPA(SgpaCaluActivity.this);
     GradePointsCheck gradePointsCheck= new GradePointsCheck();
+    boolean checkValidInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,10 @@ public class SgpaCaluActivity extends AppCompatActivity {
         });
     }
     public void initializeView() {
+        toolbar = findViewById(R.id.sgpa_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mark1=findViewById(R.id.mark1);
         mark2=findViewById(R.id.mark2);
         mark3=findViewById(R.id.mark3);
@@ -100,13 +108,14 @@ public class SgpaCaluActivity extends AppCompatActivity {
             case "1st Sem":
                 switch (selectedBranch){
                     case "Physics Cycle":
+                        resetEightSubjects();
                         firstYear.FirstSemPhy();
-                        calcuSgpa.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                firstYear();
-                            }
-                        });
+                            calcuSgpa.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                        firstYear();
+                                }
+                            });
                         reset.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -115,6 +124,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                         });
                         break;
                     case "Chemistry Cycle":
+                        resetEightSubjects();
                         firstYear.FirstSemChem();
                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -135,6 +145,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
             case "2nd Sem":
                 switch (selectedBranch) {
                     case "Physics Cycle":
+                        resetEightSubjects();
                         firstYear.SecondSemPhy();
                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -150,6 +161,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                         });
                         break;
                     case "Chemistry Cycle":
+                        resetEightSubjects();
                         firstYear.SecondSemChem();
                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -171,6 +183,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                             case "AI":
                             case "IS":
                             case "CS":
+                                resetNineSubjects();
                                 allBranchSubjectCode.semThreeCs();
                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -186,6 +199,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                 });
                                 break;
                             case "BT":
+                                resetNineSubjects();
                                 allBranchSubjectCode.semThreeBt();
                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -201,6 +215,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                 });
                                 break;
                             case "CV":
+                                resetNineSubjects();
                                 allBranchSubjectCode.semThreeCv();
                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -216,6 +231,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                 });
                                 break;
                             case "EC":
+                                resetNineSubjects();
                                 allBranchSubjectCode.semThreeEc();
                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -231,6 +247,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                 });
                                 break;
                             case "EE":
+                                resetNineSubjects();
                                 allBranchSubjectCode.semThreeEe();
                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -246,6 +263,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                 });
                                 break;
                             case "EI":
+                                resetNineSubjects();
                                 allBranchSubjectCode.semThreeEi();
                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -261,6 +279,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                 });
                                 break;
                             case "ME":
+                                resetNineSubjects();
                                 allBranchSubjectCode.semThreeMe();
                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -276,6 +295,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                 });
                                 break;
                             case "TX":
+                                resetNineSubjects();
                                 allBranchSubjectCode.semThreeTx();
                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -297,6 +317,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                     case "AI":
                                     case "IS":
                                     case "CS":
+                                        resetNineSubjects();
                                         allBranchSubjectCode.semFourCs();
                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -312,6 +333,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                         });
                                         break;
                                     case "BT":
+                                        resetNineSubjects();
                                         allBranchSubjectCode.semFourBt();
                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -327,6 +349,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                         });
                                         break;
                                     case "CV":
+                                        resetNineSubjects();
                                         allBranchSubjectCode.semFourCv();
                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -342,6 +365,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                         });
                                         break;
                                     case "EC":
+                                        resetNineSubjects();
                                         allBranchSubjectCode.semFourEc();
                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -357,6 +381,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                         });
                                         break;
                                     case "EE":
+                                        resetNineSubjects();
                                         allBranchSubjectCode.semFourEe();
                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -372,6 +397,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                         });
                                         break;
                                     case "EI":
+                                        resetNineSubjects();
                                         allBranchSubjectCode.semFourEi();
                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -387,6 +413,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                         });
                                         break;
                                     case "ME":
+                                        resetNineSubjects();
                                         allBranchSubjectCode.semFourMe();
                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -402,6 +429,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                         });
                                         break;
                                     case "TX":
+                                        resetNineSubjects();
                                         allBranchSubjectCode.semFourTx();
                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -421,6 +449,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                     case "5th Sem":
                                         switch (selectedBranch) {
                                             case "AI":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveAi();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -436,6 +465,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                 });
                                                 break;
                                             case "BT":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveBt();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -452,6 +482,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                 break;
                                             case "CS":
                                             case "IS":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveCs();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -467,6 +498,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                 });
                                                 break;
                                             case "CV":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveCv();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -482,6 +514,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                 });
                                                 break;
                                             case "EC":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveEc();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -497,6 +530,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                 });
                                                 break;
                                             case "EE":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveEe();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -512,6 +546,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                 });
                                                 break;
                                             case "EI":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveEi();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -527,6 +562,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                 });
                                                 break;
                                             case "ME":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveMe();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -542,6 +578,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                 });
                                                 break;
                                             case "TX":
+                                                resetNineSubjects();
                                                 allBranchSubjectCode.semFiveTx();
                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -561,6 +598,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                             case "6th Sem":
                                                 switch (selectedBranch) {
                                                     case "AI":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixAi();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -576,6 +614,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "BT":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixBt();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -591,6 +630,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "CS":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixCs();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -606,6 +646,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "CV":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixCv();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -621,6 +662,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "EC":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixEc();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -636,6 +678,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "EE":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixEe();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -651,6 +694,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "EI":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixEi();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -666,6 +710,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "IS":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixIs();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -681,6 +726,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "ME":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixMe();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -696,6 +742,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                         });
                                                         break;
                                                     case "TX":
+                                                        resetEightSubjects();
                                                         allBranchSubjectCode.semSixTx();
                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                             @Override
@@ -716,6 +763,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                     case "7th Sem":
                                                         switch (selectedBranch) {
                                                             case "AI":
+                                                                resetSevenSubjects();
                                                                 allBranchSubjectCode.semSevenAi();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -731,6 +779,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                 });
                                                                 break;
                                                             case "BT":
+                                                                resetSevenSubjects();
                                                                 allBranchSubjectCode.semSevenBt();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -747,6 +796,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                 break;
                                                             case "CS":
                                                             case "IS":
+                                                                resetSevenSubjects();
                                                                 allBranchSubjectCode.semSevenCs();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -762,6 +812,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                 });
                                                                 break;
                                                             case "CV":
+                                                                resetEightSubjects();
                                                                 allBranchSubjectCode.semSevenCv();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -777,6 +828,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                 });
                                                                 break;
                                                             case "EC":
+                                                                resetEightSubjects();
                                                                 allBranchSubjectCode.semSevenEc();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -792,6 +844,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                 });
                                                                 break;
                                                             case "EE":
+                                                                resetEightSubjects();
                                                                 allBranchSubjectCode.semSevenEe();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -807,6 +860,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                 });
                                                                 break;
                                                             case "EI":
+                                                                resetEightSubjects();
                                                                 allBranchSubjectCode.semSevenEi();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -822,6 +876,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                 });
                                                                 break;
                                                             case "ME":
+                                                                resetEightSubjects();
                                                                 allBranchSubjectCode.semSevenMe();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -837,6 +892,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                 });
                                                                 break;
                                                             case "TX":
+                                                                resetEightSubjects();
                                                                 allBranchSubjectCode.semSevenTx();
                                                                 calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
@@ -856,6 +912,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                             case "8th Sem":
                                                                 switch (selectedBranch) {
                                                                     case "AI":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightAi();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -871,6 +928,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                         });
                                                                         break;
                                                                     case "BT":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightBt();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -887,6 +945,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                         break;
                                                                     case "IS":
                                                                     case "CS":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightCs();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -902,6 +961,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                         });
                                                                         break;
                                                                     case "CV":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightCv();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -917,6 +977,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                         });
                                                                         break;
                                                                     case "EC":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightEc();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -932,6 +993,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                         });
                                                                         break;
                                                                     case "EE":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightEe();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -947,6 +1009,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                         });
                                                                         break;
                                                                     case "EI":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightEi();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -962,6 +1025,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                         });
                                                                         break;
                                                                     case "ME":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightMe();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -977,6 +1041,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
                                                                         });
                                                                         break;
                                                                     case "TX":
+                                                                        resetFiveSubjects();
                                                                         allBranchSubjectCode.semEightTx();
                                                                         calcuSgpa.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
@@ -1072,6 +1137,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
         sub4=Integer.parseInt(mark4.getText().toString());
         sub5=Integer.parseInt(mark5.getText().toString());
 
+
         total = calculatorSGPA.TotalForFiveSubject(sub1,sub2,sub3,sub4,sub5);
         percentage = calculatorSGPA.PercentageForFiveSubject(total);
 
@@ -1091,6 +1157,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
         mark7.setText("");
         mark8.setText("");
         mark9.setText("");
+        cardView.setVisibility(View.GONE);
 
     }
     public void resetEightSubjects(){
@@ -1102,6 +1169,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
         mark6.setText("");
         mark7.setText("");
         mark8.setText("");
+        cardView.setVisibility(View.GONE);
     }
     public void resetSevenSubjects(){
         mark1.setText("");
@@ -1111,6 +1179,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
         mark5.setText("");
         mark6.setText("");
         mark7.setText("");
+        cardView.setVisibility(View.GONE);
     }
     public void resetFiveSubjects(){
         mark1.setText("");
@@ -1118,6 +1187,7 @@ public class SgpaCaluActivity extends AppCompatActivity {
         mark3.setText("");
         mark4.setText("");
         mark5.setText("");
+        cardView.setVisibility(View.GONE);
     }
     public void showingFinalResult(){
         cardView.setVisibility(View.VISIBLE);

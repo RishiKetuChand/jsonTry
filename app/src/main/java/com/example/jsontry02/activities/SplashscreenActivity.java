@@ -16,6 +16,7 @@ import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Result;
+import com.example.jsontry02.dto.SliderImages;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.dto.Videos;
 import com.example.jsontry02.utilities.ApiHelper;
@@ -41,14 +42,15 @@ public class SplashscreenActivity extends AppCompatActivity implements ServerCal
 	}
 
 	@Override
-	public void onDataReceived(List<Course> data) {
-		//this method is called from apiHelper class as callback
+	public void onDataReceived(List<Course> data, List<SliderImages> imageData) {
 		Intent activitityIntent = new Intent(this, HomeActivity.class);
 		Bundle bundle = new Bundle();
 		bundle.putParcelableArrayList("courses", (ArrayList<? extends Parcelable>) data);
+		bundle.putParcelableArrayList("imagesData", (ArrayList<? extends Parcelable>) imageData);
 		activitityIntent.putExtras(bundle);
 		startActivity(activitityIntent);
 		finish();
+
 	}
 
 	@Override

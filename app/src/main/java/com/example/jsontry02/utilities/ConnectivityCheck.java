@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.jsontry02.R;
-import com.example.jsontry02.activities.SplashscreenActivity;
 
 public class ConnectivityCheck extends BroadcastReceiver {
     Context mContext;

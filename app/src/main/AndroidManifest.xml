@@ -7,8 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
-    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
 
     <application
@@ -18,10 +19,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.TimerActivity"></activity>
-        <activity android:name=".activities.VideoPlayActivity" />
-        <activity android:name=".activities.VideoActivity" />
-        <activity android:name=".activities.SgpaCaluActivity" />
+        <activity android:name=".activities.LogInActivity"></activity>
+        <activity android:name=".activities.SignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.TimerActivity" />
+        <activity
+            android:name=".activities.VideoPlayActivity"
+            android:label="@string/videoPlay"
+            android:parentActivityName=".activities.SplashscreenActivity" />
+        <activity
+            android:name=".activities.VideoActivity"
+            android:label="@string/videos"
+            android:parentActivityName=".activities.SplashscreenActivity" />
+        <activity
+            android:name=".activities.SgpaCaluActivity"
+            android:label="@string/sgpaCalculator"
+            android:parentActivityName=".activities.SplashscreenActivity" />
         <activity
             android:name=".activities.ResultWebViewActivity"
             android:label="ResultWebView"
@@ -54,17 +72,13 @@
             android:name=".activities.SplashscreenActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/courses"
             android:parentActivityName=".activities.SplashscreenActivity" />
-        <receiver android:name=".utilities.MyAlarm"/>
+
+        <receiver android:name=".utilities.MyAlarm" />
     </application>
 
 </manifest>

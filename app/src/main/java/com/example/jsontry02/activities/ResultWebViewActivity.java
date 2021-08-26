@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.jsontry02.R;
 import com.example.jsontry02.dto.Result;
+import com.example.jsontry02.utilities.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class ResultWebViewActivity extends AppCompatActivity {
     Toolbar toolbar;
     List<Result> resultList = new ArrayList<>();
     int i=0;
+    PreferenceManager preferenceManager = new PreferenceManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +57,7 @@ public class ResultWebViewActivity extends AppCompatActivity {
                 resultUrl = resultList.get(i).getVtu4u();
                 break;
             case "custom":
-                resultUrl = resultList.get(i).getCustomRes001()+"4gm19is045"+resultList.get(i).getCustomRes002();
+                resultUrl = resultList.get(i).getCustomRes001()+preferenceManager.getUserUSN()+resultList.get(i).getCustomRes002();
                 break;
             case "official":
                 resultUrl = resultList.get(i).getOfficialWebResult();

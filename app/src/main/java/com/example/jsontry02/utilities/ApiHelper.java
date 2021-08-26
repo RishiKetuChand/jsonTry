@@ -16,6 +16,7 @@ import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Result;
+import com.example.jsontry02.dto.SliderImages;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.dto.Videos;
 
@@ -37,21 +38,30 @@ public class ApiHelper {
 	private static final String RESOURCE_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/main/resources%20/";
 	private static final String COURSE_ENDPOINT ="/courses.json";
 	private static final String RESULT_BASE ="https://college-notes-188a4-default-rtdb.firebaseio.com/Result";
-	private static final String RESULT_ENDPOINT ="/result001.json";
 	private static final String YOUTUBE_VIDEO ="https://college-notes-188a4-default-rtdb.firebaseio.com/YouTube_Video.json";
+	private static final String IMAGE_SLIDER ="https://college-notes-188a4-default-rtdb.firebaseio.com/homeScreenImageSlider.json";
 	public void fetchCources(SplashscreenActivity splashscreenActivity){
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,BASE_URL+COURSE_ENDPOINT,null, new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
-				processCourses(response,splashscreenActivity);
+				//processCourses(response,splashscreenActivity);
+				JsonObjectRequest jsonObjectRequest2 = new JsonObjectRequest(Request.Method.GET,IMAGE_SLIDER,null, new Response.Listener<JSONObject>() {
+					@Override
+					public void onResponse(JSONObject response2) {
+						processCourses(response,response2,splashscreenActivity);
+					}
+				},null);
+				VolleySingleton.getInstance(context).getRequestQueue().add(jsonObjectRequest2);
+
 			}
 		},null);
 		VolleySingleton.getInstance(context).getRequestQueue().add(jsonObjectRequest);
 
 	}
 
-	private void processCourses(JSONObject response,SplashscreenActivity splashscreenActivity) {
+	private void processCourses(JSONObject response,JSONObject response2,SplashscreenActivity splashscreenActivity) {
 		List<Course> courses = new ArrayList<>();
+		List<SliderImages> sliderImages = new ArrayList<>();
 		if(null != response){
 			Iterator<String> keys = response.keys();
 
@@ -72,7 +82,27 @@ public class ApiHelper {
 				}
 			}
 		}
-		splashscreenActivity.onDataReceived(courses);
+		if(null != response2){
+			Iterator<String> keys = response2.keys();
+
+			while(keys.hasNext()) {
+				String key = keys.next();
+				try {
+					if (response2.get(key) instanceof JSONObject) {
+						// do something with jsonObject here
+						JSONObject temp = response2.getJSONObject(key);
+						SliderImages sliderImage = new SliderImages();
+						sliderImage.setId(temp.getString("id"));
+						sliderImage.setImageUrl(temp.getString("imgUrl"));
+						sliderImage.setInfoUrl(temp.getString("infoUrl"));
+						sliderImages.add(sliderImage);
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		splashscreenActivity.onDataReceived(courses,sliderImages);
 	}
 
 

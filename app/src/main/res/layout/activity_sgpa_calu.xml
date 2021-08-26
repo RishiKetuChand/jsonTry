@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/module_toolbar"
+        android:id="@+id/sgpa_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
@@ -136,6 +136,7 @@
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:layout_column="1"
+                        android:maxLength="3"
                         android:layout_row="0"/>
 
                     <TextView
@@ -158,6 +159,7 @@
                         android:background="@drawable/spinner_border_bg"
                         android:ems="3"
                         android:hint="@string/marks"
+                        android:maxLength="3"
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -183,6 +185,7 @@
                         android:background="@drawable/spinner_border_bg"
                         android:ems="3"
                         android:hint="@string/marks"
+                        android:maxLength="3"
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -208,6 +211,7 @@
                         android:background="@drawable/spinner_border_bg"
                         android:ems="3"
                         android:hint="@string/marks"
+                        android:maxLength="3"
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -233,6 +237,7 @@
                         android:background="@drawable/spinner_border_bg"
                         android:ems="3"
                         android:hint="@string/marks"
+                        android:maxLength="3"
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -258,6 +263,7 @@
                         android:background="@drawable/spinner_border_bg"
                         android:ems="3"
                         android:hint="@string/marks"
+                        android:maxLength="3"
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -284,6 +290,7 @@
                         android:background="@drawable/spinner_border_bg"
                         android:ems="3"
                         android:hint="@string/marks"
+                        android:maxLength="3"
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -309,6 +316,7 @@
                         android:background="@drawable/spinner_border_bg"
                         android:ems="3"
                         android:hint="@string/marks"
+                        android:maxLength="3"
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -334,6 +342,7 @@
                         android:background="@drawable/spinner_border_bg"
                         android:ems="3"
                         android:hint="@string/marks"
+                        android:maxLength="3"
                         android:inputType="number"
                         android:textAlignment="center"
                         android:textColor="@color/black"

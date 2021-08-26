@@ -29,6 +29,7 @@ import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Result;
+import com.example.jsontry02.dto.SliderImages;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.dto.Videos;
 import com.example.jsontry02.utilities.ApiHelper;
@@ -120,7 +121,7 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 	}
 
 	@Override
-	public void onDataReceived(List<Course> data) {
+	public void onDataReceived(List<Course> data,List<SliderImages> imageData) {
 
 	}
 

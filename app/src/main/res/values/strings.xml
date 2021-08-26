@@ -6,6 +6,21 @@
     <string name="modules">Modules</string>
     <string name="resources">Resources</string>
     <string name="sgpaCalculator">SGPA Calculator</string>
+    <string name="videoPlay">VideoPlay</string>
+
+    <string name="name">Name</string>
+    <string name="signUp">Sign Up</string>
+    <string name="logIn">Log In</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="usn">USN</string>
+    <string name="college">College</string>
+    <string name="alreadyAUser">Already a user - Login</string>
+    <string name="enterOtp">Enter OTP</string>
+    <string name="verify">Verify</string>
+    <string name="changePhoneNumber">Change Phone Number</string>
+    <string name="newToOurApp">New to our app - Sign Up</string>
+
 
     <string name="sem3">3rd Sem</string>
     <string name="sem4">4th Sem</string>
@@ -61,6 +76,56 @@
     <string name="total">Total:</string>
     <string name="percentage">Percentage:</string>
     <string name="sgpa">SGPA:</string>
+
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <string-array name="semFilter">
+        <item name="allSem">All Sem</item>
+        <item name="sem3">3rd Sem</item>
+        <item name="sem4">4th Sem</item>
+        <item name="sem5">5th Sem</item>
+        <item name="sem6">6th Sem</item>
+        <item name="sem7">7th Sem</item>
+        <item name="sem8">8th Sem</item>
+    </string-array>
+
+    <string-array name="AllSem">
+        <item name="sem1">1st Sem</item>
+        <item name="sem2">2nd Sem</item>
+        <item name="sem3">3rd Sem</item>
+        <item name="sem4">4th Sem</item>
+        <item name="sem5">5th Sem</item>
+        <item name="sem6">6th Sem</item>
+        <item name="sem7">7th Sem</item>
+        <item name="sem8">8th Sem</item>
+    </string-array>
+    <string-array name="AllBranch">
+        <item name="ai">AI</item>
+        <item name="bio">BT</item>
+        <item name="cs">CS</item>
+        <item name="cv">CV</item>
+        <item name="ec">EC</item>
+        <item name="ee">EE</item>
+        <item name="ei">EI</item>
+        <item name="is">IS</item>
+        <item name="me">ME</item>
+        <item name="tx">TX</item>
+    </string-array>
+
+    <string-array name="FirstYear">
+        <item name="phy">Physics Cycle</item>
+        <item name="che">Chemistry Cycle</item>
+    </string-array>
 
 
     <string name="mat11">18MAT11 :</string>
@@ -575,55 +640,4 @@
     <string name="default07">18XX37 :</string>
     <string name="default08">18XX38 :</string>
     <string name="default09">18XX39 :</string>
-
-
-    <string name="title_activity_main">MainActivity</string>
-
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
-
-    <string-array name="semFilter">
-        <item name="allSem">All Sem</item>
-        <item name="sem3">3rd Sem</item>
-        <item name="sem4">4th Sem</item>
-        <item name="sem5">5th Sem</item>
-        <item name="sem6">6th Sem</item>
-        <item name="sem7">7th Sem</item>
-        <item name="sem8">8th Sem</item>
-    </string-array>
-
-    <string-array name="AllSem">
-        <item name="sem1">1st Sem</item>
-        <item name="sem2">2nd Sem</item>
-        <item name="sem3">3rd Sem</item>
-        <item name="sem4">4th Sem</item>
-        <item name="sem5">5th Sem</item>
-        <item name="sem6">6th Sem</item>
-        <item name="sem7">7th Sem</item>
-        <item name="sem8">8th Sem</item>
-    </string-array>
-    <string-array name="AllBranch">
-        <item name="ai">AI</item>
-        <item name="bio">BT</item>
-        <item name="cs">CS</item>
-        <item name="cv">CV</item>
-        <item name="ec">EC</item>
-        <item name="ee">EE</item>
-        <item name="ei">EI</item>
-        <item name="is">IS</item>
-        <item name="me">ME</item>
-        <item name="tx">TX</item>
-    </string-array>
-
-    <string-array name="FirstYear">
-        <item name="phy">Physics Cycle</item>
-        <item name="che">Chemistry Cycle</item>
-    </string-array>
-
 </resources>

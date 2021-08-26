@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -17,9 +18,11 @@ import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
 import com.example.jsontry02.dto.Resource;
 import com.example.jsontry02.dto.Result;
+import com.example.jsontry02.dto.SliderImages;
 import com.example.jsontry02.dto.Subject;
 import com.example.jsontry02.dto.Videos;
 import com.example.jsontry02.utilities.ApiHelper;
+import com.example.jsontry02.utilities.PreferenceManager;
 import com.example.jsontry02.utilities.ServerCallback;
 
 import java.util.ArrayList;
@@ -32,6 +35,7 @@ public class ResultActivity extends AppCompatActivity implements ServerCallback 
     Toolbar toolbar;
     Bundle bundle = new Bundle();
     CardView cardView, cardView2;
+    PreferenceManager preferenceManager= new PreferenceManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +84,8 @@ public class ResultActivity extends AppCompatActivity implements ServerCallback 
         customUSNResultText=findViewById(R.id.usnText);
         cardView=findViewById(R.id.cardView);
         cardView2=findViewById(R.id.cardView2);
-
-
+        customUSNResult.setText("View Result Of "+preferenceManager.getUserUSN().toUpperCase());
+        customUSNResultText.setText("You can directly view result Of " +preferenceManager.getUserUSN().toUpperCase());
         ApiHelper apiHelper = new ApiHelper(this);
         apiHelper.fetchResult(this);
 
@@ -89,7 +93,7 @@ public class ResultActivity extends AppCompatActivity implements ServerCallback 
     }
 
     @Override
-    public void onDataReceived(List<Course> data) {
+    public void onDataReceived(List<Course> data,List<SliderImages> imageData) {
 
     }
 
