@@ -1,6 +1,7 @@
 package com.example.jsontry02.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,10 +27,17 @@ import com.example.jsontry02.R;
 import com.example.jsontry02.adapters.SubjectAdapter;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
+import com.example.jsontry02.dto.Resource;
+import com.example.jsontry02.dto.Result;
+import com.example.jsontry02.dto.SliderImages;
 import com.example.jsontry02.dto.Subject;
+import com.example.jsontry02.dto.Videos;
 import com.example.jsontry02.utilities.ApiHelper;
+import com.example.jsontry02.utilities.PreferenceManager;
 import com.example.jsontry02.utilities.ServerCallback;
 import com.skydoves.powerspinner.PowerSpinnerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,10 +54,50 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_subject);
 		courseId = getIntent().getStringExtra("courseId");
+		if(null == courseId){
+			courseId = fetchValueFromPreference();
+		}
+		else{
+			saveCourseIdToPreference(courseId);
+		}
+		String temp  =  fetchValueFromPreference();
 		initializeView();
 		fetchSubjects(courseId);
 	}
+
+	private String fetchValueFromPreference() {
+		PreferenceManager pm = new PreferenceManager(getApplicationContext());
+		return pm.getCourseId();
+
+	}
+	private void saveCourseIdToPreference(String courseId){
+		PreferenceManager pm = new PreferenceManager(getApplicationContext());
+		pm.saveCourseId(courseId);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
 	public void initializeView(){
+		animationView = findViewById(R.id.loading);
 		toolbar = findViewById(R.id.subject_toolbar);
 		toolbar.setTitle(courseId);
 		setSupportActionBar(toolbar);
@@ -60,13 +109,19 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		recyclerView.setAdapter(adapter);
 	}
 
+	@Override
+	protected void onSaveInstanceState(Bundle savedInstanceState) {
+		super.onSaveInstanceState(savedInstanceState);
+		savedInstanceState.putString("courseId",courseId);
+	}
+
 	private void fetchSubjects(String courseId) {
 		ApiHelper helper = new ApiHelper(this);
 		helper.fetchSubjects(courseId,this);
 	}
 
 	@Override
-	public void onDataReceived(List<Course> data) {
+	public void onDataReceived(List<Course> data,List<SliderImages> imageData) {
 
 	}
 
@@ -75,12 +130,28 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		for(Subject sub : data){
 			System.out.println(sub.getName());
 		}
+		animationView.setVisibility(View.GONE);
 		adapter.setData(data);
 		adapter.notifyDataSetChanged();
 	}
 
 	@Override
 	public void onModuleDataReceived(List<Module> data) {
+
+	}
+
+	@Override
+	public void onResourceDataReceived(List<Resource> data) {
+
+	}
+
+	@Override
+	public void onResultReceived(List<Result> data) {
+
+	}
+
+	@Override
+	public void onVideoReceived(List<Videos> data) {
 
 	}
 
@@ -156,4 +227,10 @@ public class SubjectActivity extends AppCompatActivity implements ServerCallback
 		}
 	}
 }
-//adapter.getFilter().filter("08");
+
+
+//	@Override
+//	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//		super.onRestoreInstanceState(savedInstanceState);
+//		courseId = savedInstanceState.getString("courseId");
+//	}

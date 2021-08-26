@@ -1,11 +1,14 @@
 package com.example.jsontry02.adapters;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
@@ -14,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jsontry02.R;
+import com.example.jsontry02.activities.ModulesActivity;
+import com.example.jsontry02.activities.ResourceActivity;
 import com.example.jsontry02.dto.Module;
 
 import java.util.ArrayList;
@@ -58,13 +63,31 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleView
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-					//Intent i = new Intent(context, FileViewActivity.class);
-					//i.putExtra("pdfUrl",data.get(position).getResourceUrl());
-					//context.startActivity(i);
 
-                Uri webpage = Uri.parse(data.get(position).getResourceUrl());
-                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+
+                Intent i = new Intent(context, ResourceActivity.class);
+                i.putExtra("resourceId",data.get(position).getResourceID());
+                context.startActivity(i);
+                /*Intent i = new Intent(context, FileViewActivity.class);
+                i.putExtra("pdfUrl",data.get(position).getResourceUrl());
+                context.startActivity(i);
+
+               Uri webpage = Uri.parse(data.get(position).getResourceUrl());
+               Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 context.startActivity(webIntent);
+
+                DownloadManager.Request request = new DownloadManager.Request( Uri.parse(data.get(position).getResourceID()));
+                request.setTitle("Trail 01");
+                request.setDescription("Trail Description");
+                request.setAllowedOverRoaming(true);
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                request.allowScanningByMediaScanner();
+                //in the firebase database use the complete file name in module's name field
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,data.get(position).getName());
+                request.setMimeType(getMimeType(data.get(position).getResourceID()));
+
+                DownloadManager manager = (DownloadManager) view.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
+                manager.enqueue(request);*/
             }
         });
 
@@ -116,5 +139,14 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ModuleView
                 module_syllabus=(TextView) itemView.findViewById(R.id.module_syllabus_full);
                 view = itemView;
         }
+    }
+
+    public static String getMimeType(String url) {
+        String type = null;
+        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+        if (extension != null) {
+            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
+        }
+        return type;
     }
 }

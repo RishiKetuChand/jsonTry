@@ -1,17 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.jsontry02">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.HomeActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activities.LogInActivity"></activity>
+        <activity android:name=".activities.SignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.TimerActivity" />
+        <activity
+            android:name=".activities.VideoPlayActivity"
+            android:label="@string/videoPlay"
+            android:parentActivityName=".activities.SplashscreenActivity" />
+        <activity
+            android:name=".activities.VideoActivity"
+            android:label="@string/videos"
+            android:parentActivityName=".activities.SplashscreenActivity" />
+        <activity
+            android:name=".activities.SgpaCaluActivity"
+            android:label="@string/sgpaCalculator"
+            android:parentActivityName=".activities.SplashscreenActivity" />
+        <activity
+            android:name=".activities.ResultWebViewActivity"
+            android:label="ResultWebView"
+            android:parentActivityName=".activities.ResultActivity" />
+        <activity
+            android:name=".activities.ResultActivity"
+            android:label="@string/result"
+            android:parentActivityName=".activities.SplashscreenActivity" />
+        <activity
+            android:name=".activities.ResourceActivity"
+            android:label="@string/resources"
+            android:parentActivityName=".activities.ModulesActivity" />
+        <activity android:name=".activities.HomeActivity" />
 
         <receiver android:name=".utilities.ConnectivityCheck">
             <intent-filter>
@@ -21,7 +62,7 @@
 
         <activity
             android:name=".activities.ModulesActivity"
-            android:label="Module"
+            android:label="@string/module"
             android:parentActivityName=".activities.SubjectActivity" />
         <activity
             android:name=".activities.SubjectActivity"
@@ -31,15 +72,13 @@
             android:name=".activities.SplashscreenActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/courses" />
+            android:label="@string/courses"
+            android:parentActivityName=".activities.SplashscreenActivity" />
+
+        <receiver android:name=".utilities.MyAlarm" />
     </application>
 
 </manifest>

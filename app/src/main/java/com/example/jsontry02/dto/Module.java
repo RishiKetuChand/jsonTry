@@ -4,7 +4,7 @@ public class Module {
     private String id;
     private String name;
     private String syllabus;
-    private String resourceUrl;
+    private String resourceID;
     private String moduleNum;
 
     public String getId() {
@@ -31,12 +31,12 @@ public class Module {
         this.syllabus = syllabus;
     }
 
-    public String getResourceUrl() {
-        return resourceUrl;
+    public String getResourceID() {
+        return resourceID;
     }
 
-    public void setResourceUrl(String resourceUrl) {
-        this.resourceUrl = resourceUrl;
+    public void setResourceID(String resourceID) {
+        this.resourceID = resourceID;
     }
 
     public String getModuleNum() {

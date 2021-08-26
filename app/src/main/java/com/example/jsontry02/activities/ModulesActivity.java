@@ -1,5 +1,6 @@
 package com.example.jsontry02.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,8 +19,13 @@ import com.example.jsontry02.R;
 import com.example.jsontry02.adapters.ModuleAdapter;
 import com.example.jsontry02.dto.Course;
 import com.example.jsontry02.dto.Module;
+import com.example.jsontry02.dto.Resource;
+import com.example.jsontry02.dto.Result;
+import com.example.jsontry02.dto.SliderImages;
 import com.example.jsontry02.dto.Subject;
+import com.example.jsontry02.dto.Videos;
 import com.example.jsontry02.utilities.ApiHelper;
+import com.example.jsontry02.utilities.PreferenceManager;
 import com.example.jsontry02.utilities.ServerCallback;
 
 import java.util.ArrayList;
@@ -37,15 +43,21 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modules);
         subjectId = getIntent().getStringExtra("subjectId");
-        toolbar = findViewById(R.id.module_toolbar);
-        toolbar.setTitle(subjectId);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(null == subjectId){
+            subjectId = fetchValueFromPreference();
+        }
+        else{
+            saveSubjectIdToPreference(subjectId);
+        }
         initializeView();
         fetchModules(subjectId);
     }
     public void initializeView() {
         animationView = findViewById(R.id.loading);
+        toolbar = findViewById(R.id.module_toolbar);
+        toolbar.setTitle(subjectId);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.moduleRecyclerView);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(lm);
@@ -57,9 +69,45 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
         ApiHelper helper = new ApiHelper(this);
         helper.fetchModules(subjectId,this);
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
-    public void onDataReceived(List<Course> data) {
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private String fetchValueFromPreference() {
+        PreferenceManager pm = new PreferenceManager(getApplicationContext());
+        return pm.getSubjectId();
+
+    }
+    private void saveSubjectIdToPreference(String subjectId){
+        PreferenceManager pm = new PreferenceManager(getApplicationContext());
+        pm.saveSubjectId(subjectId);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("subjectId",subjectId);
+    }
+
+    @Override
+    public void onDataReceived(List<Course> data, List<SliderImages> imageData) {
 
     }
 
@@ -77,6 +125,21 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
         animationView.setVisibility(View.GONE);
         adapter.setData(data);
         adapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onResourceDataReceived(List<Resource> data) {
+
+    }
+
+    @Override
+    public void onResultReceived(List<Result> data) {
+
+    }
+
+    @Override
+    public void onVideoReceived(List<Videos> data) {
 
     }
 
@@ -108,5 +171,13 @@ public class ModulesActivity extends AppCompatActivity implements ServerCallback
             default:return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = getIntent();
+        intent.putExtra("courseId","ECE");
+        setResult(RESULT_OK,intent);
     }
 }
